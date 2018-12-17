@@ -1,4 +1,4 @@
-https://hetic-w1p2021-19-sega.netlify.com/
+https://submarine-survivor.netlify.com/
 
 # `OXO` game library
 

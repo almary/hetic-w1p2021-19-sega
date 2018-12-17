@@ -1,0 +1,51 @@
+.submarine {
+  height: 80px;
+  width: 150px;
+  background: black;
+}
+
+.plane {
+    height: 40px;
+  width: 70px;
+  background: coral;
+}
+
+.water {
+  width: 100vw;
+  height: 70vh;
+  position: absolute;
+  bottom: 0;
+  background: cornflowerblue;
+  overflow: hidden;
+}
+
+.sky {
+  width: 100vw;
+  height: 30vh;
+  position: absolute;
+  background: lightgray;
+}
+
+.sky__box {
+  width: 500px;
+  height: auto;
+  position: absolute;
+  right: 0;
+  top: 90px;
+  border: red 2px solid;
+}
+
+.obstacle {
+  width: 40px;
+  height: 40px;
+  background: purple;
+  position: absolute;
+}
+
+.score {
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  font-size: 30px;
+  font-family: monospace;
+}

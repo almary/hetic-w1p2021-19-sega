@@ -41,7 +41,7 @@ function game() {
       oxo.animation.move(plane, "left", 20);
     }
     if (key === "d" && position.x < 420) {
-      oxo.animation.move(plane, "right", 20);
+      oxo.animation.move(plane, "right", 20 );
     }
   });
 

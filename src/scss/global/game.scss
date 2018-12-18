@@ -5,16 +5,18 @@
 .submarine {
   height: 80px;
   width: 120px;
-  background-image: url('../../src/assets/submarine.png');
+  background-image: url("../../src/assets/submarine.png");
   background-size: contain;
   background-repeat: no-repeat;
   // border: red 2px solid;
 }
 
 .plane {
-    height: 40px;
-  width: 70px;
-  background: coral;
+  height: 90px;
+  width: 120px;
+  background-image: url("../../src/assets/plane.png");
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .water {
@@ -22,7 +24,8 @@
   height: 60vh;
   position: absolute;
   bottom: 0;
-  background: cornflowerblue;
+  background: lightblue;
+  // background-image: url("../../src/assets/background/ocean.png");
   z-index: 1;
   overflow: hidden;
 }
@@ -33,15 +36,16 @@
   position: absolute;
   background: lightgray;
   overflow: hidden;
+  // background-image: url("../../src/assets/background/sky.png");
+  background-size: cover;
 }
 
 .sky__box {
   width: 500px;
-  height: auto;
+  height: 50px;
   position: absolute;
   right: 0;
-  top: 90px;
-  border: red 2px solid;
+  top: 100px;
 }
 
 .obstacle {
@@ -64,7 +68,7 @@
 }
 
 .score--waste {
-  right : 80px;
+  right: 80px;
 }
 
 .obstacle--boat {
@@ -87,9 +91,11 @@
   // background-image: url('../../assets/shark.gif')
 }
 
-// .hitboxe {
-//   visibility: hidden;
-// }
+.hitboxe {
+  // visibility: hidden;
+  border: red 2px solid;
+  z-index: 4000;
+}
 
 .background {
   position: absolute;

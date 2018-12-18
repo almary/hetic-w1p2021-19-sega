@@ -7,10 +7,12 @@ var boatInterval;
 var sharkInterval;
 var collisionInterval;
 var accelerationInterval;
+var planeInterval;
 var size = 40;
 var xObstacle = 1280 / 40;
 var yObstacle = 480 / 40;
 var countWaste = 0;
+var pressed = [];
 
 oxo.screens.loadScreen("game", game);
 
@@ -39,25 +41,29 @@ function game() {
     appendTo: "#box"
   });
 
-  // plane moves
-
-  oxo.inputs.listenKeys(["q", "d"], function(key) {
-    var position = oxo.animation.getPosition(plane);
-    console.log(position);
-    if (key === "q" && position.x > 0) {
-      oxo.animation.move(plane, "left", 20);
-    }
-    if (key === "d" && position.x < 420) {
-      oxo.animation.move(plane, "right", 20);
-    }
-  });
-
   // submarine moves
   oxo.animation.moveElementWithArrowKeys(submarine, 100);
   // submarine death
   oxo.elements.onLeaveScreenOnce(submarine, function() {
     console.log("end");
   });
+
+  // plane moves
+  planeInterval = setInterval(function planeMove() {
+    if (pressed.length !== 0) {
+      for (let i = 0; i < pressed.length; i++) {
+        if (pressed[i] === "q") {
+          oxo.animation.move(plane, "left", 10);
+        }
+        if (pressed[i] === "d") {
+          var position = oxo.animation.getPosition(plane);
+          if (position.x < 370) {
+            oxo.animation.move(plane, "right", 10);
+          }
+        }
+      }
+    }
+  }, 50);
 
   // Score
   setInterval(addScore, speed * 10);
@@ -72,7 +78,7 @@ function game() {
   sharkInterval = setInterval(addShark, 3000);
 
   //collisions
-  collisionInterval = setInterval(listenCollision, 500);
+  collisionInterval = setInterval(listenCollision, 1000);
 
   //Move
   moveInterval = setInterval(move, speed);
@@ -84,18 +90,15 @@ function game() {
   accelerationInterval = setInterval(acceleration, 100);
 
   //Array key pressed
-  var pressed = [];
   document.addEventListener("keydown", function(event) {
     if (pressed.indexOf(event.key) == -1) {
       pressed.push(event.key);
-      console.log(pressed);
     }
   });
 
   document.addEventListener("keyup", function(event) {
     if (pressed.indexOf(event.key) > -1) {
       pressed = pressed.filter(key => key !== event.key);
-      console.log(pressed);
     }
   });
 }
@@ -177,29 +180,30 @@ function listenCollision() {
   var collectable = document.querySelectorAll(".obstacle--waste");
   var death = document.querySelectorAll(".obstacle--death");
   for (let i = 0; i < collectable.length; i++) {
-    // if (collectable !== []) {
-    oxo.elements.onCollisionWithElementOnce(
-      submarineLoop,
-      collectable[i],
-      function() {
-        collectable[i].remove();
-        // Add count waste
-        countWaste++;
-        console.log(countWaste);
-        document.getElementById("score--waste").innerHTML = countWaste;
-      }
-    );
-    // }
-    // if (death !== []) {
-    oxo.elements.onCollisionWithElementOnce(
-      submarineLoop,
-      death[i],
-      function() {
-        console.log("dead");
-        // ecran de fin
-      }
-    );
-    // }
+    if (death !== []) {
+      oxo.elements.onCollisionWithElement(
+        submarineLoop,
+        death[i],
+        function() {
+          console.log("dead");
+          // ecran de fin
+        }
+      );
+    }
+
+    if (collectable !== []) {
+      oxo.elements.onCollisionWithElement(
+        submarineLoop,
+        collectable[i],
+        function() {
+          collectable[i].remove();
+          // Add count waste
+          countWaste++;
+          console.log(countWaste);
+          document.getElementById("score--waste").innerHTML = countWaste;
+        }
+      );
+    }
   }
 }
 
@@ -237,5 +241,5 @@ function acceleration() {
 }
 
 function addScore() {
-  //oxo.player.addToScore(1);
+  oxo.player.addToScore(1);
 }

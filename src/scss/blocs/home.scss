@@ -9,6 +9,8 @@
   width: 100vw;
   height: 100vh;
   background-image: url("../../src/assets/background/ocean-full.png");
+  -webkit-animation: backgroundScroll 5999999s linear infinite;
+  animation: backgroundScroll 5999999s linear infinite;
 }
 
 .home__logo {
@@ -17,12 +19,12 @@
   width: 700px;
   height: 500px;
   background-image: url("../../src/assets/logo.png");
+  background-repeat: no-repeat;
 }
 
 .home__background,
 .home__logo {
   background-size: contain;
-  background-repeat: no-repeat;
 }
 
 .home__play,

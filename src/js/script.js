@@ -15,11 +15,9 @@ var yObstacle = 480 / 40;
 var countWaste = 0;
 var pressed = [];
 
-// var play = document.getElementById("play");                                             corriger le load
-// play.addEventListener('click', play);
-// function play() {
-oxo.screens.loadScreen("game", game);
-// }
+// document.getElementById("play").addEventListener("click", function() {                                                                 pourquoi le clic ne marche pas
+  oxo.screens.loadScreen("game", game);
+// });
 
 // function moveElementWithKeys(element, speed) {
 //   var pixels = speed > 100 ? Math.round(speed / 100) : 1;
@@ -81,7 +79,7 @@ function game() {
     if (key === "a") {
       var drop = oxo.elements.createElement({
         type: "div",
-        class: ".obstacle--death drop drop--little move move--down",
+        class: "obstacle--death drop drop--little move move--down",
         styles: {
           transform: "translate(" + position.x + "px, 0px)"
         }
@@ -91,7 +89,7 @@ function game() {
     if (key === "z") {
       var drop = oxo.elements.createElement({
         type: "div",
-        class: ".obstacle--death drop drop--medium move move--down",
+        class: "obstacle--death drop drop--medium move move--down",
         styles: {
           transform: "translate(" + position.x + "px, 0px)"
         }
@@ -101,7 +99,7 @@ function game() {
     if (key === "e") {
       var drop = oxo.elements.createElement({
         type: "div",
-        class: ".obstacle--death drop drop--large move move--down",
+        class: "obstacle--death drop drop--large move move--down",
         styles: {
           transform: "translate(" + position.x + "px, 0px)"
         }
@@ -264,9 +262,8 @@ function moveDown() {
     var position = oxo.animation.getPosition(allMovableElements[i]);
     if (position.y < oxo.utils.getRandomNumber(100, 1800)) {
       oxo.animation.move(allMovableElements[i], "down", 10, true);
-    }
-    else {
-      allMovableElements[i].classList.remove('move--down')
+    } else {
+      allMovableElements[i].classList.remove("move--down");
     }
   }
 }
@@ -282,9 +279,9 @@ function remove() {
   }
 }
 
-function acceleration() {
-  // speed = speed - 1; // MARCHE PAS
-}
+// function acceleration() {
+//   speed = speed - 1; // MARCHE PAS
+// }
 
 function addScore() {
   oxo.player.addToScore(10);

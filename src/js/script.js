@@ -1,7 +1,8 @@
-var speed = 10;
+var speed = 20;
 var keyPlane = [];
 var obstacleInterval;
 var moveInterval;
+var moveDownInterval;
 var removeInterval;
 var boatInterval;
 var sharkInterval;
@@ -14,7 +15,11 @@ var yObstacle = 480 / 40;
 var countWaste = 0;
 var pressed = [];
 
+// var play = document.getElementById("play");                                             corriger le load
+// play.addEventListener('click', play);
+// function play() {
 oxo.screens.loadScreen("game", game);
+// }
 
 // function moveElementWithKeys(element, speed) {
 //   var pixels = speed > 100 ? Math.round(speed / 100) : 1;
@@ -70,23 +75,41 @@ function game() {
     }
   }, 50);
 
+  // plane drop
+  oxo.inputs.listenKeys(["a", "z", "e"], function(key) {
+    var position = oxo.animation.getPosition(plane);
+    if (key === "a") {
+      var drop = oxo.elements.createElement({
+        type: "div",
+        class: ".obstacle--death drop drop--little move move--down",
+        styles: {
+          transform: "translate(" + position.x + "px, 0px)"
+        }
+        // appendTo: "#water"
+      });
+    }
+  });
+
   // Score
   setInterval(addScore, speed * 100);
 
   //Obstacles
-  obstacleInterval = setInterval(addObstacle, 1000);
+  obstacleInterval = setInterval(addObstacle, 1500);
 
   //Add Boat
   boatInterval = setInterval(addBoat, 10000);
 
   //Add Shark
-  sharkInterval = setInterval(addShark, 5000);
-
-  //collisions
-  collisionInterval = setInterval(listenCollision, 1000);
+  sharkInterval = setInterval(addShark, 7000);
 
   //Move
   moveInterval = setInterval(move, speed);
+
+  //Move Down
+  moveDownInterval = setInterval(moveDown, speed);
+
+  //collisions
+  collisionInterval = setInterval(listenCollision, 1000);
 
   //Remove
   removeInterval = setInterval(remove, 5000);
@@ -149,7 +172,7 @@ function addBoat() {
       appendTo: "#water"
     });
 
-    // // add sprite boat on the water, on the same position than the other boat
+    // add sprite boat on the water, on the same position than the other boat
     obstacle = oxo.elements.createElement({
       class: "obstacle obstacle--death obstacle--boat move",
       styles: {
@@ -186,14 +209,10 @@ function listenCollision() {
   var death = document.querySelectorAll(".obstacle--death");
   for (let i = 0; i < collectable.length; i++) {
     if (death !== []) {
-      oxo.elements.onCollisionWithElement(
-        submarineLoop,
-        death[i],
-        function() {
-          console.log("dead");
-          // ecran de fin
-        }
-      );
+      oxo.elements.onCollisionWithElement(submarineLoop, death[i], function() {
+        console.log("dead");
+        // ecran de fin
+      });
     }
 
     if (collectable !== []) {
@@ -215,19 +234,22 @@ function listenCollision() {
 function move() {
   var allMovableElements = document.querySelectorAll(".move");
   for (let i = 0; i < allMovableElements.length; i++) {
-    oxo.animation.move(allMovableElements[i], "left", 5, true); // move all elements with class .move to the left by 10px
+    oxo.animation.move(allMovableElements[i], "left", 10, true); // move all elements with class .move to the left by 10px
   }
+}
 
-  // Demande trop de ressources
-
-  // var collectable = document.querySelectorAll(".obstacle--waste");
-  // var submarineLoop = document.querySelector('.submarine') // changer cette ligne, définir tout en haut le submarine !
-  // for (let i = 0; i < collectable.length; i++) {
-  //   oxo.elements.onCollisionWithElementOnce(submarineLoop, collectable[i], function() {
-  //     collectable[i].();
-  //     // Add count waste
-  //   });
-  // }
+function moveDown() {
+  var allMovableElements = document.querySelectorAll(".move--down");
+  for (let i = 0; i < allMovableElements.length; i++) {
+    var position = oxo.animation.getPosition(allMovableElements[i]);
+    console.log(position.y);
+    if (position.y < oxo.utils.getRandomNumber(100, 1800)) {
+      oxo.animation.move(allMovableElements[i], "down", 10, true);
+    }
+    else {
+      allMovableElements[i].classList.remove('move--down')
+    }
+  }
 }
 
 function remove() {

@@ -1,0 +1,48 @@
+.home__background,
+.home__logo,
+.home__play,
+.home__instructions {
+  position: absolute;
+}
+
+.home__background {
+  width: 100vw;
+  height: 100vh;
+  background-image: url("../../src/assets/background/ocean-full.png");
+}
+
+.home__logo {
+  top: 30vh;
+  left: 22vw;
+  width: 700px;
+  height: 500px;
+  background-image: url("../../src/assets/logo.png");
+}
+
+.home__background,
+.home__logo {
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.home__play,
+.home__instructions {
+  font-family: "upheaval", monospace;
+  color: white;
+  width: 100vw;
+  text-align: center;
+}
+
+.home__play {
+  font-size: 80px;
+  top: 55vh;
+}
+
+.home__play:hover {
+  cursor: pointer;
+}
+
+.home__instructions {
+  font-size: 45px;
+  top: 70vh;
+}

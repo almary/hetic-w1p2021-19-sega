@@ -36,6 +36,36 @@
   background-repeat: no-repeat;
 }
 
+.sky {
+  width: 100vw;
+  height: 39vh;
+  position: absolute;
+  overflow: hidden;
+  background-image: url("../../src/assets/background/sky.png");
+  background-size: cover;
+  -webkit-animation: backgroundScroll 1999999s linear infinite;
+  animation: backgroundScroll 1999999s linear infinite;
+}
+
+.sky__box {
+  width: 500px;
+  height: 70px;
+  position: absolute;
+  right: 0;
+  top: 100px;
+  border: grey 2px solid;
+}
+
+.drop {
+  position: absolute;
+  background: purple;
+  top: 170px;
+  left: 850px;
+  width: 60px;
+  height: 60px;
+  z-index: 2;
+}
+
 .water {
   width: 100vw;
   height: 60vh;
@@ -71,26 +101,6 @@
 //   background-image: url("../../src/assets/bubbles2.gif");
 //   background-size: contain;
 // }
-
-.sky {
-  width: 100vw;
-  height: 39vh;
-  position: absolute;
-  overflow: hidden;
-  background-image: url("../../src/assets/background/sky.png");
-  background-size: cover;
-  -webkit-animation: backgroundScroll 1999999s linear infinite;
-  animation: backgroundScroll 1999999s linear infinite;
-}
-
-.sky__box {
-  width: 500px;
-  height: 70px;
-  position: absolute;
-  right: 0;
-  top: 100px;
-  border: grey 2px solid;
-}
 
 .obstacle {
   width: 60px;
@@ -146,8 +156,7 @@
 }
 
 .hitboxe {
-  // visibility: hidden;
-  z-index: 4000;
+  visibility: hidden;
 }
 
 .background {

@@ -69,7 +69,7 @@ function game() {
   sharkInterval = setInterval(addShark, 3000);
 
   //collisions
-  collisionInterval = setInterval(listenCollision, 3000);
+  collisionInterval = setInterval(listenCollision, 2000);
 
   //Move
   moveInterval = setInterval(move, speed);
@@ -119,15 +119,15 @@ function addBoat() {
       appendTo: "#water"
     });
 
-  //   // add sprite boat on the water, on the same position than the other boat
-  //   obstacle = oxo.elements.createElement({
-  //     class: "obstacle obstacle--death obstacle--boat move",
-  //     styles: {
-  //       transform: "translate(" + (3 * size + 1280) + "px, " + 7 * size + "px)"
-  //     },
-  //     appendTo: "#water__top"
-  //   });
-  // }
+    // // add sprite boat on the water, on the same position than the other boat
+    // obstacle = oxo.elements.createElement({
+    //   class: "obstacle obstacle--death obstacle--boat move",
+    //   styles: {
+    //     transform: "translate(" + (3 * size + 1280) + "px, " + 7 * size + "px)"
+    //   },
+    //   appendTo: "#water__top"
+    // });
+
   }
 }
 

@@ -1,7 +1,8 @@
 .submarine {
-  height: 80px;
-  width: 150px;
+  height: 60px;
+  width: 120px;
   background: black;
+  // background-image: url('../../assets/submarine.png')
 }
 
 .plane {
@@ -12,18 +13,20 @@
 
 .water {
   width: 100vw;
-  height: 70vh;
+  height: 60vh;
   position: absolute;
   bottom: 0;
   background: cornflowerblue;
-  overflow: hidden;
+  z-index: 1;
+    // overflow: hidden;
 }
 
 .sky {
   width: 100vw;
-  height: 30vh;
+  height: 40vh;
   position: absolute;
   background: lightgray;
+  overflow: hidden;
 }
 
 .sky__box {
@@ -42,10 +45,38 @@
   position: absolute;
 }
 
+.obstacle--waste {
+  background: green;
+}
+
 .score {
   position: absolute;
   z-index: 1;
   right: 0;
   font-size: 30px;
   font-family: monospace;
+}
+
+.score--waste {
+  right : 80px;
+}
+
+.obstacle--boat {
+  width: 270px;
+  height: 120px;
+}
+
+// .water__top {
+//   width: 100vw;
+//   height: 50vh;
+//   position: absolute;
+//   z-index: 1000;
+//   overflow: hidden;
+// }
+
+.obstacle--shark {
+  position: absolute;
+  width: 160px;
+  height: 50px;
+  // background-image: url('../../assets/shark.gif')
 }

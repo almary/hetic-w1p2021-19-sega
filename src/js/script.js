@@ -22,7 +22,6 @@ oxo.screens.loadScreen("game", game);
 // }
 
 function game() {
-
   var submarine = oxo.elements.createElement({
     type: "div",
     class: "submarine",
@@ -70,7 +69,7 @@ function game() {
   sharkInterval = setInterval(addShark, 3000);
 
   //collisions
-  collisionInterval = setInterval(listenCollision, 3000)
+  collisionInterval = setInterval(listenCollision, 3000);
 
   //Move
   moveInterval = setInterval(move, speed);
@@ -110,20 +109,26 @@ function addObstacle() {
 }
 
 function addBoat() {
-  //Add obstacle--boat
-  // if (oxo.player.getScore() > 200) {
+  //Add obstacle--boat hitboxe in the water
+  if (oxo.player.getScore() > 200) {
     obstacle = oxo.elements.createElement({
-      class: "obstacle obstacle--death obstacle--boat move",
+      class: "obstacle obstacle--death obstacle--boat hitboxe move",
       styles: {
-        transform:
-          "translate(" +
-          (oxo.utils.getRandomNumber(0, xObstacle - 1) * size + 1280) +
-          "px, " +
-          (-3) * size +
-          "px)"
+        transform: "translate(" + (3 * size + 1280) + "px, " + -3 * size + "px)"
       },
       appendTo: "#water"
     });
+
+  //   // add sprite boat on the water, on the same position than the other boat
+  //   obstacle = oxo.elements.createElement({
+  //     class: "obstacle obstacle--death obstacle--boat move",
+  //     styles: {
+  //       transform: "translate(" + (3 * size + 1280) + "px, " + 7 * size + "px)"
+  //     },
+  //     appendTo: "#water__top"
+  //   });
+  // }
+  }
 }
 
 function addShark() {
@@ -147,19 +152,27 @@ function addShark() {
 function listenCollision() {
   var collectable = document.querySelectorAll(".obstacle--waste");
   var death = document.querySelectorAll(".obstacle--death");
-  var submarineLoop = document.querySelector('.submarine') // changer cette ligne, définir tout en haut le submarine !
+  var submarineLoop = document.querySelector(".submarine"); // changer cette ligne, définir tout en haut le submarine !
   for (let i = 0; i < collectable.length; i++) {
-    oxo.elements.onCollisionWithElementOnce(submarineLoop, collectable[i], function() {
-      collectable[i].remove();
-      // Add count waste
-      countWaste++;
-      console.log(countWaste);
-      document.getElementById("score--waste").innerHTML = countWaste;
-    });
-    oxo.elements.onCollisionWithElementOnce(submarineLoop, death[i], function() {
-      console.log('dead');
-      // ecran de fin
-    });
+    oxo.elements.onCollisionWithElementOnce(
+      submarineLoop,
+      collectable[i],
+      function() {
+        collectable[i].remove();
+        // Add count waste
+        countWaste++;
+        console.log(countWaste);
+        document.getElementById("score--waste").innerHTML = countWaste;
+      }
+    );
+    oxo.elements.onCollisionWithElementOnce(
+      submarineLoop,
+      death[i],
+      function() {
+        console.log("dead");
+        // ecran de fin
+      }
+    );
   }
 }
 

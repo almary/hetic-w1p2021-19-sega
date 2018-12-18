@@ -18,7 +18,7 @@
   bottom: 0;
   background: cornflowerblue;
   z-index: 1;
-    // overflow: hidden;
+  overflow: hidden;
 }
 
 .sky {
@@ -66,17 +66,20 @@
   height: 120px;
 }
 
-// .water__top {
-//   width: 100vw;
-//   height: 50vh;
-//   position: absolute;
-//   z-index: 1000;
-//   overflow: hidden;
-// }
+.water__top {
+  width: 100vw;
+  height: 50vh;
+  position: absolute;
+  z-index: 1000;
+}
 
 .obstacle--shark {
   position: absolute;
   width: 160px;
   height: 50px;
   // background-image: url('../../assets/shark.gif')
+}
+
+.hitboxe {
+  visibility: hidden;
 }

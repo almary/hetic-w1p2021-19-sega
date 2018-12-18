@@ -294,19 +294,23 @@ window.oxo = {
       var colliding = false;
 
       var interval = setInterval(function() {
-        if (oxo.elements.elementsAreColliding(element, target)) {
-          if (!colliding) {
-            action();
-            colliding = true;
-
-            if (once) {
-              clearInterval(interval);
-            }
-          }
+        if (!target) {
+          clearInterval(interval);
         } else {
-          colliding = false;
+          if (oxo.elements.elementsAreColliding(element, target)) {
+            if (!colliding) {
+              action();
+              colliding = true;
+
+              if (once) {
+                clearInterval(interval);
+              }
+            }
+          } else {
+            colliding = false;
+          }
         }
-      }, 10);
+      }, 100);
 
       return interval;
     },

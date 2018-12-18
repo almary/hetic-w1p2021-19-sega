@@ -1,8 +1,14 @@
+* {
+  box-sizing: border-box;
+}
+
 .submarine {
-  height: 60px;
+  height: 80px;
   width: 120px;
-  background: black;
-  // background-image: url('../../assets/submarine.png')
+  background-image: url('../../src/assets/submarine.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  // border: red 2px solid;
 }
 
 .plane {
@@ -70,7 +76,8 @@
   width: 100vw;
   height: 50vh;
   position: absolute;
-  z-index: 1000;
+  z-index: 1;
+  overflow-x: hidden;
 }
 
 .obstacle--shark {
@@ -82,4 +89,28 @@
 
 // .hitboxe {
 //   visibility: hidden;
+// }
+
+.background {
+  position: absolute;
+  bottom: 0;
+  width: 100vw;
+  height: 20vh;
+  z-index: 1;
+}
+
+// .background__far {
+//  background-image: url('../../src/assets/background/far.png');
+//  height: inherit;
+//  width: inherit;
+//  background-size: contain;
+//  z-index: inherit;
+// }
+
+// .background__sand {
+//   background-image: url('../../src/assets/background/sand.png');
+//   height: inherit;
+//   width: inherit;
+//   background-size: contain;       // répétitions css
+//   z-index: -1;
 // }

@@ -1,6 +1,8 @@
 var speed = 10;
+var keyPlane = [];
 var obstacleInterval;
 var moveInterval;
+var removeInterval;
 var boatInterval;
 var sharkInterval;
 var collisionInterval;
@@ -17,7 +19,7 @@ oxo.screens.loadScreen("game", game);
 //   var interval;
 //   var pressed = [];
 
-//     document.addEventListener('keydown', function(event) {
+//     document.addEventListener('', function(event) {
 //   }
 // }
 
@@ -38,6 +40,7 @@ function game() {
   });
 
   // plane moves
+
   oxo.inputs.listenKeys(["q", "d"], function(key) {
     var position = oxo.animation.getPosition(plane);
     console.log(position);
@@ -50,7 +53,7 @@ function game() {
   });
 
   // submarine moves
-  oxo.animation.moveElementWithArrowKeys(submarine, 150);
+  oxo.animation.moveElementWithArrowKeys(submarine, 100);
   // submarine death
   oxo.elements.onLeaveScreenOnce(submarine, function() {
     console.log("end");
@@ -69,13 +72,32 @@ function game() {
   sharkInterval = setInterval(addShark, 3000);
 
   //collisions
-  collisionInterval = setInterval(listenCollision, 2000);
+  collisionInterval = setInterval(listenCollision, 500);
 
   //Move
   moveInterval = setInterval(move, speed);
 
+  //Remove
+  removeInterval = setInterval(remove, 5000);
+
   //Acceleration
   accelerationInterval = setInterval(acceleration, 100);
+
+  //Array key pressed
+  var pressed = [];
+  document.addEventListener("keydown", function(event) {
+    if (pressed.indexOf(event.key) == -1) {
+      pressed.push(event.key);
+      console.log(pressed);
+    }
+  });
+
+  document.addEventListener("keyup", function(event) {
+    if (pressed.indexOf(event.key) > -1) {
+      pressed = pressed.filter(key => key !== event.key);
+      console.log(pressed);
+    }
+  });
 }
 
 function addObstacle() {
@@ -120,14 +142,13 @@ function addBoat() {
     });
 
     // // add sprite boat on the water, on the same position than the other boat
-    // obstacle = oxo.elements.createElement({
-    //   class: "obstacle obstacle--death obstacle--boat move",
-    //   styles: {
-    //     transform: "translate(" + (3 * size + 1280) + "px, " + 7 * size + "px)"
-    //   },
-    //   appendTo: "#water__top"
-    // });
-
+    obstacle = oxo.elements.createElement({
+      class: "obstacle obstacle--death obstacle--boat move",
+      styles: {
+        transform: "translate(" + (3 * size + 1280) + "px, " + 7 * size + "px)"
+      },
+      appendTo: "#water__top"
+    });
   }
 }
 
@@ -150,10 +171,13 @@ function addShark() {
 }
 
 function listenCollision() {
+  var collectable = [];
+  var death = [];
+  var submarineLoop = document.querySelector(".submarine"); // changer cette ligne, définir tout en haut ?
   var collectable = document.querySelectorAll(".obstacle--waste");
   var death = document.querySelectorAll(".obstacle--death");
-  var submarineLoop = document.querySelector(".submarine"); // changer cette ligne, définir tout en haut le submarine !
   for (let i = 0; i < collectable.length; i++) {
+    // if (collectable !== []) {
     oxo.elements.onCollisionWithElementOnce(
       submarineLoop,
       collectable[i],
@@ -165,6 +189,8 @@ function listenCollision() {
         document.getElementById("score--waste").innerHTML = countWaste;
       }
     );
+    // }
+    // if (death !== []) {
     oxo.elements.onCollisionWithElementOnce(
       submarineLoop,
       death[i],
@@ -173,6 +199,7 @@ function listenCollision() {
         // ecran de fin
       }
     );
+    // }
   }
 }
 
@@ -180,12 +207,6 @@ function move() {
   var allMovableElements = document.querySelectorAll(".move");
   for (let i = 0; i < allMovableElements.length; i++) {
     oxo.animation.move(allMovableElements[i], "left", 5, true); // move all elements with class .move to the left by 10px
-
-    //get position.x to remove if it is out of the screen (on the left)
-    var position = oxo.animation.getPosition(allMovableElements[i]);
-    if (position.x < -270) {
-      allMovableElements[i].remove();
-    }
   }
 
   // Demande trop de ressources
@@ -194,10 +215,21 @@ function move() {
   // var submarineLoop = document.querySelector('.submarine') // changer cette ligne, définir tout en haut le submarine !
   // for (let i = 0; i < collectable.length; i++) {
   //   oxo.elements.onCollisionWithElementOnce(submarineLoop, collectable[i], function() {
-  //     collectable[i].remove();
+  //     collectable[i].();
   //     // Add count waste
   //   });
   // }
+}
+
+function remove() {
+  var allMovableElements = document.querySelectorAll(".move");
+  for (let i = 0; i < allMovableElements.length; i++) {
+    //get position.x to  if it is out of the screen (on the left)
+    var position = oxo.animation.getPosition(allMovableElements[i]);
+    if (position.x < -270) {
+      allMovableElements[i].remove();
+    }
+  }
 }
 
 function acceleration() {
@@ -205,5 +237,5 @@ function acceleration() {
 }
 
 function addScore() {
-  oxo.player.addToScore(1);
+  //oxo.player.addToScore(1);
 }

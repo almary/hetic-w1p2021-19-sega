@@ -53,7 +53,7 @@
   position: absolute;
   right: 0;
   top: 100px;
-  border: grey 2px solid;
+  // border: grey 2px solid;
 }
 
 .drop {
@@ -64,6 +64,16 @@
   width: 60px;
   height: 60px;
   z-index: 2;
+}
+
+.drop--medium {
+  width: 75px;
+  height: 75px;
+}
+
+.drop--large {
+  width: 90px;
+  height: 90px;
 }
 
 .water {

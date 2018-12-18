@@ -88,6 +88,26 @@ function game() {
         // appendTo: "#water"
       });
     }
+    if (key === "z") {
+      var drop = oxo.elements.createElement({
+        type: "div",
+        class: ".obstacle--death drop drop--medium move move--down",
+        styles: {
+          transform: "translate(" + position.x + "px, 0px)"
+        }
+        // appendTo: "#water"
+      });
+    }
+    if (key === "e") {
+      var drop = oxo.elements.createElement({
+        type: "div",
+        class: ".obstacle--death drop drop--large move move--down",
+        styles: {
+          transform: "translate(" + position.x + "px, 0px)"
+        }
+        // appendTo: "#water"
+      });
+    }
   });
 
   // Score
@@ -242,7 +262,6 @@ function moveDown() {
   var allMovableElements = document.querySelectorAll(".move--down");
   for (let i = 0; i < allMovableElements.length; i++) {
     var position = oxo.animation.getPosition(allMovableElements[i]);
-    console.log(position.y);
     if (position.y < oxo.utils.getRandomNumber(100, 1800)) {
       oxo.animation.move(allMovableElements[i], "down", 10, true);
     }
@@ -257,7 +276,7 @@ function remove() {
   for (let i = 0; i < allMovableElements.length; i++) {
     //get position.x to  if it is out of the screen (on the left)
     var position = oxo.animation.getPosition(allMovableElements[i]);
-    if (position.x < -270) {
+    if (position.x < -800) {
       allMovableElements[i].remove();
     }
   }

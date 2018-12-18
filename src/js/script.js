@@ -57,7 +57,7 @@ function game() {
         }
         if (pressed[i] === "d") {
           var position = oxo.animation.getPosition(plane);
-          if (position.x < 370) {
+          if (position.x < 320) {
             oxo.animation.move(plane, "right", 10);
           }
         }
@@ -66,7 +66,7 @@ function game() {
   }, 50);
 
   // Score
-  setInterval(addScore, speed * 10);
+  setInterval(addScore, speed * 100);
 
   //Obstacles
   obstacleInterval = setInterval(addObstacle, 1500); // Call the addObstacle function every 150 turn
@@ -113,7 +113,7 @@ function addObstacle() {
         (oxo.utils.getRandomNumber(0, xObstacle - 1) * size + 1280) +
         "px, " +
         oxo.utils.getRandomNumber(0, yObstacle - 1) * size +
-        "px)" // PROBLEME : ne pop pas au dessus d'une certaine ligne
+        "px)"
     },
     appendTo: "#water"
   });
@@ -241,5 +241,5 @@ function acceleration() {
 }
 
 function addScore() {
-  oxo.player.addToScore(1);
+  oxo.player.addToScore(10);
 }

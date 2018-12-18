@@ -4,16 +4,16 @@
 
 .submarine {
   height: 80px;
-  width: 120px;
+  width: 150px;
   background-image: url("../../src/assets/submarine.png");
   background-size: contain;
   background-repeat: no-repeat;
+  border: red 2px solid;
   // border: red 2px solid;
 }
 
 .plane {
-  height: 90px;
-  width: 120px;
+  height: 70px;
   background-image: url("../../src/assets/plane.png");
   background-size: contain;
   background-repeat: no-repeat;
@@ -42,10 +42,11 @@
 
 .sky__box {
   width: 500px;
-  height: 50px;
+  height: 70px;
   position: absolute;
   right: 0;
   top: 100px;
+  border: red 2px solid;
 }
 
 .obstacle {

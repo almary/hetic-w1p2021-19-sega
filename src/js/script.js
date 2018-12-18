@@ -74,13 +74,13 @@ function game() {
   setInterval(addScore, speed * 100);
 
   //Obstacles
-  obstacleInterval = setInterval(addObstacle, 1500);
+  obstacleInterval = setInterval(addObstacle, 1000);
 
   //Add Boat
-  boatInterval = setInterval(addBoat, 7000);
+  boatInterval = setInterval(addBoat, 10000);
 
   //Add Shark
-  sharkInterval = setInterval(addShark, 4000);
+  sharkInterval = setInterval(addShark, 5000);
 
   //collisions
   collisionInterval = setInterval(listenCollision, 1000);
@@ -92,7 +92,7 @@ function game() {
   removeInterval = setInterval(remove, 5000);
 
   //Acceleration
-  accelerationInterval = setInterval(acceleration, 100);
+  // accelerationInterval = setInterval(acceleration, 100);
 
   //Array key pressed
   document.addEventListener("keydown", function(event) {
@@ -242,7 +242,7 @@ function remove() {
 }
 
 function acceleration() {
-  speed = speed - 1; // MARCHE PAS
+  // speed = speed - 1; // MARCHE PAS
 }
 
 function addScore() {

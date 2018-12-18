@@ -2,13 +2,30 @@
   box-sizing: border-box;
 }
 
+@-webkit-keyframes backgroundScroll {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -99999999px 0;
+  }
+}
+
+@keyframes backgroundScroll {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -99999999px 0;
+  }
+}
+
 .submarine {
   height: 80px;
-  width: 150px;
+  width: 120px;
   background-image: url("../../src/assets/submarine.png");
   background-size: contain;
   background-repeat: no-repeat;
-  border: red 2px solid;
   // border: red 2px solid;
 }
 
@@ -23,21 +40,47 @@
   width: 100vw;
   height: 60vh;
   position: absolute;
-  bottom: 0;
-  background: lightblue;
-  // background-image: url("../../src/assets/background/ocean.png");
+  bottom: -3px;
+  background-image: url("../../src/assets/background/ocean.png");
   z-index: 1;
   overflow: hidden;
+  -webkit-animation: backgroundScroll 799999s linear infinite;
+  animation: backgroundScroll 799999s linear infinite;
 }
+
+.waves {
+  // border: red 2px solid;
+  position: absolute;
+  height: 80px;
+  width: 100vw;
+  z-index: 2;
+  bottom: 58vh;
+  background-image: url("../../src/assets/background/waves.png");
+  background-size: cover;
+                                                                       //regler toutes les répétitions de background css et z index et position absolute et contain
+  -webkit-animation: backgroundScroll 899999s linear infinite;
+  animation: backgroundScroll 899999s linear infinite;
+}
+
+// .water__bubbles {
+//   position: absolute;
+//   z-index: 1;
+//   width: 50px;
+//   height: 50px;
+//   top: 220px;
+//   background-image: url("../../src/assets/bubbles2.gif");
+//   background-size: contain;
+// }
 
 .sky {
   width: 100vw;
-  height: 40vh;
+  height: 39vh;
   position: absolute;
-  background: lightgray;
   overflow: hidden;
-  // background-image: url("../../src/assets/background/sky.png");
+  background-image: url("../../src/assets/background/sky.png");
   background-size: cover;
+  -webkit-animation: backgroundScroll 1999999s linear infinite;
+  animation: backgroundScroll 1999999s linear infinite;
 }
 
 .sky__box {
@@ -46,18 +89,24 @@
   position: absolute;
   right: 0;
   top: 100px;
-  border: red 2px solid;
+  border: grey 2px solid;
 }
 
 .obstacle {
-  width: 40px;
-  height: 40px;
-  background: purple;
+  width: 60px;
+  height: 60px;
   position: absolute;
+  background: purple;
 }
 
 .obstacle--waste {
-  background: green;
+  background-image: url("../../src/assets/can.png");
+  background-size: contain;
+}
+
+.obstacle--rock {
+  background-image: url("../../src/assets/rock.png");
+  background-size: contain;
 }
 
 .score {
@@ -94,7 +143,6 @@
 
 .hitboxe {
   // visibility: hidden;
-  border: red 2px solid;
   z-index: 4000;
 }
 

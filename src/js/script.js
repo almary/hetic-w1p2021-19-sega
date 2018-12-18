@@ -43,6 +43,11 @@ function game() {
 
   // submarine moves
   oxo.animation.moveElementWithArrowKeys(submarine, 100);
+
+  //bubbles moves
+  // var bubbles = document.getElementById('bubbles');
+  // oxo.animation.moveElementWithArrowKeys(bubbles, 100);
+
   // submarine death
   oxo.elements.onLeaveScreenOnce(submarine, function() {
     console.log("end");
@@ -69,13 +74,13 @@ function game() {
   setInterval(addScore, speed * 100);
 
   //Obstacles
-  obstacleInterval = setInterval(addObstacle, 1500); // Call the addObstacle function every 150 turn
+  obstacleInterval = setInterval(addObstacle, 1500);
 
   //Add Boat
-  boatInterval = setInterval(addBoat, 5000);
+  boatInterval = setInterval(addBoat, 7000);
 
   //Add Shark
-  sharkInterval = setInterval(addShark, 3000);
+  sharkInterval = setInterval(addShark, 4000);
 
   //collisions
   collisionInterval = setInterval(listenCollision, 1000);
@@ -127,7 +132,7 @@ function addObstacle() {
         (oxo.utils.getRandomNumber(0, xObstacle - 1) * size + 1280) +
         "px, " +
         oxo.utils.getRandomNumber(0, yObstacle - 1) * size +
-        "px)" // PROBLEME : ne pop pas au dessus d'une certaine ligne
+        "px)"
     },
     appendTo: "#water"
   });
@@ -139,7 +144,7 @@ function addBoat() {
     obstacle = oxo.elements.createElement({
       class: "obstacle obstacle--death obstacle--boat hitboxe move",
       styles: {
-        transform: "translate(" + (3 * size + 1280) + "px, " + -3 * size + "px)"
+        transform: "translate(" + (3 * size + 1280) + "px, " + -4 * size + "px)"
       },
       appendTo: "#water"
     });
@@ -148,7 +153,7 @@ function addBoat() {
     obstacle = oxo.elements.createElement({
       class: "obstacle obstacle--death obstacle--boat move",
       styles: {
-        transform: "translate(" + (3 * size + 1280) + "px, " + 7 * size + "px)"
+        transform: "translate(" + (3 * size + 1280) + "px, " + 6 * size + "px)"
       },
       appendTo: "#water__top"
     });

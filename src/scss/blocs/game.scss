@@ -65,16 +65,21 @@
   width: 60px;
   height: 60px;
   z-index: 2;
+  background-image: url("../../src/assets/brick.png");
+  background-size: contain;
+  background-repeat: no-repeat
 }
 
 .drop--medium {
   width: 75px;
   height: 75px;
+  background-image: url("../../src/assets/bomb.png");
 }
 
 .drop--large {
   width: 90px;
   height: 90px;
+  background-image: url("../../src/assets/barrel.png");
 }
 
 .water {

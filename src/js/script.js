@@ -91,7 +91,7 @@ function game() {
     canDrop = false;
     setTimeout(function() {
       canDrop = true;
-    }, 3000);
+    }, 1500);
     if (key === "a") {
       var drop = oxo.elements.createElement({
         type: "div",
@@ -100,17 +100,12 @@ function game() {
           transform: "translate(" + position.x + "px, 0px)"
         }
       });
-    }
-    if (key === "a") {
-      var drop = oxo.elements.createElement({
-        type: "div",
-        class: "obstacle--death drop drop--little move move--down hitboxe",
-        styles: {
-          transform: "translate(" + position.x + "px, 0px)"
-        },
-        appendTo: "#water"
+      oxo.elements.onCollisionWithElement(submarine, drop, function() {
+        console.log("dead");
+        // ecran de fin
       });
     }
+
     if (key === "z") {
       var drop = oxo.elements.createElement({
         type: "div",
@@ -119,17 +114,12 @@ function game() {
           transform: "translate(" + position.x + "px, 0px)"
         }
       });
-    }
-    if (key === "z") {
-      var drop = oxo.elements.createElement({
-        type: "div",
-        class: "obstacle--death drop drop--medium move move--down hitboxe",
-        styles: {
-          transform: "translate(" + position.x + "px, 0px)"
-        },
-        appendTo: "#water"
+      oxo.elements.onCollisionWithElement(submarine, drop, function() {
+        console.log("dead");
+        // ecran de fin
       });
     }
+
     if (key === "e") {
       var drop = oxo.elements.createElement({
         type: "div",
@@ -138,15 +128,9 @@ function game() {
           transform: "translate(" + position.x + "px, 0px)"
         }
       });
-    }
-    if (key === "e") {
-      var drop = oxo.elements.createElement({
-        type: "div",
-        class: "obstacle--death drop drop--large move move--down hitboxe",
-        styles: {
-          transform: "translate(" + position.x + "px, 0px)"
-        },
-        appendTo: "#water"
+      oxo.elements.onCollisionWithElement(submarine, drop, function() {
+        console.log("dead");
+        // ecran de fin
       });
     }
   });
@@ -289,10 +273,6 @@ function addBarrel() {
   // Check collisions
   oxo.elements.onCollisionWithElement(submarine, obstacle, function() {
     obstacle.remove();
-    // Add count waste
-    countWaste++;
-    console.log(countWaste);
-    document.getElementById("score--waste").innerHTML = countWaste;
   });
 }
 
@@ -316,10 +296,6 @@ function addShark() {
   // Check collisions
   oxo.elements.onCollisionWithElement(submarine, obstacle, function() {
     obstacle.remove();
-    // Add count waste
-    countWaste++;
-    console.log(countWaste);
-    document.getElementById("score--waste").innerHTML = countWaste;
   });
 }
 

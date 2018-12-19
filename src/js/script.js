@@ -142,7 +142,7 @@ function game() {
   obstacleInterval = setInterval(addObstacle, 1500);
 
   //Add Boat
-  boatInterval = setInterval(addBoat, 10000);
+  // boatInterval = setInterval(addBoat, 10000);
 
   //Add Shark
   sharkInterval = setInterval(addShark, 7000);
@@ -212,27 +212,27 @@ function addObstacle() {
   });
 }
 
-function addBoat() {
-  //Add obstacle--boat hitboxe in the water
-  if (oxo.player.getScore() > 200) {
-    obstacle = oxo.elements.createElement({
-      class: "obstacle obstacle--death obstacle--boat hitboxe--boat move",
-      styles: {
-        transform: "translate(" + (3 * size + 1280) + "px, " + -4 * size + "px)"
-      },
-      appendTo: "#water"
-    });
+// function addBoat() {
+//   //Add obstacle--boat hitboxe in the water
+//   if (oxo.player.getScore() > 200) {
+//     obstacle = oxo.elements.createElement({
+//       class: "obstacle obstacle--death obstacle--boat hitboxe--boat move",
+//       styles: {
+//         transform: "translate(" + (3 * size + 1280) + "px, " + -4 * size + "px); z-index: 2"
+//       },
+//       appendTo: "#water"
+//     });
 
-    // add sprite boat on the water, on the same position than the other boat
-    obstacle = oxo.elements.createElement({
-      class: "obstacle obstacle--death obstacle--boat move",
-      styles: {
-        transform: "translate(" + (3 * size + 1280) + "px, " + 6 * size + "px)"
-      },
-      appendTo: "#water__top"
-    });
-  }
-}
+//     // add sprite boat on the water, on the same position than the other boat
+//     obstacle = oxo.elements.createElement({
+//       class: "obstacle obstacle--death obstacle--boat move",
+//       styles: {
+//         transform: "translate(" + (3 * size + 1280) + "px, " + 6 * size + "px)"
+//       },
+//       appendTo: "#water__top"
+//     });
+//   }
+// }
 
 function addShark() {
   //Add obstacle--shark

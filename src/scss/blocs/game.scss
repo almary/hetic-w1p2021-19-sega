@@ -58,7 +58,7 @@
 
 .drop {
   position: absolute;
-  background: purple;
+  // background: purple;
   top: 170px;
   left: 850px;
   width: 60px;
@@ -88,18 +88,19 @@
   overflow: hidden;
 }
 
+                                                                    //sass ici
+
 .waves {
-  // border: red 2px solid;
   position: absolute;
-  height: 80px;
   width: 100vw;
+  height: 80px;
+  bottom: 57vh;
   z-index: 2;
-  bottom: 58vh;
-  background-image: url("../../src/assets/background/waves.png");
-  background-size: cover;
-                                                                       //regler toutes les répétitions de background css et z index et position absolute et contain
+  background-image: url('../../src/assets/background/waves.png');
   -webkit-animation: backgroundScroll 899999s linear infinite;
   animation: backgroundScroll 899999s linear infinite;
+
+                                                                       //regler toutes les répétitions de background css et z index et position absolute et contain
 }
 
 // .water__bubbles {
@@ -146,15 +147,16 @@
   height: 120px;
   background-image: url("../../src/assets/boat.png");
   background-size: contain;
+  z-index: 2;
 }
 
-.water__top {
-  width: 100vw;
-  height: 50vh;
-  position: absolute;
-  z-index: 1;
-  overflow-x: hidden;
-}
+// .water__top {
+//   width: 100vw;
+//   height: 50vh;
+//   position: absolute;
+//   z-index: 1;
+//   overflow-x: hidden;
+// }
 
 .obstacle--shark {
   position: absolute;
@@ -165,9 +167,10 @@
   background-repeat: no-repeat;
 }
 
-.hitboxe {  //pb pour hitbox boat ?
+.hitboxe {
   top: -150px;
-  visibility: hidden;
+  // visibility: hidden;
+  background: purple;
 }
 
 .background {

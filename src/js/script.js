@@ -19,9 +19,9 @@ var submarine;
 var canDrop = true;
 
 setTimeout(function() {
-document.getElementById("play").addEventListener("click", function () {       //  pourquoi le clic ne marche pas
+document.getElementById("play").addEventListener("click", function () {
 oxo.screens.loadScreen("game", game);
-  });
+  }, 100);
 });
 
 function game() {

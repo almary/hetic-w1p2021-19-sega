@@ -134,16 +134,6 @@
   //regler toutes les répétitions de background css et z index et position absolute et contain
 }
 
-// .water__bubbles {
-//   position: absolute;
-//   z-index: 1;
-//   width: 50px;
-//   height: 50px;
-//   top: 220px;
-//   background-image: url("../../src/assets/bubbles2.gif");
-//   background-size: contain;
-// }
-
 .obstacle {
   width: 60px;
   height: 60px;
@@ -178,14 +168,6 @@
   background-repeat: no-repeat;
 }
 
-// .water__top {
-//   width: 100vw;
-//   height: 50vh;
-//   position: absolute;
-//   z-index: 1;
-//   overflow-x: hidden;
-// }
-
 .obstacle--shark {
   position: absolute;
   width: 160px;
@@ -195,12 +177,6 @@
   background-repeat: no-repeat;
 }
 
-.hitboxe {
-  top: -150px;
-  // visibility: hidden;
-  background: purple;
-}
-
 .background {
   position: absolute;
   bottom: 0;
@@ -208,19 +184,3 @@
   height: 20vh;
   z-index: 1;
 }
-
-// .background__far {
-//  background-image: url('../../src/assets/background/far.png');
-//  height: inherit;
-//  width: inherit;
-//  background-size: contain;
-//  z-index: inherit;
-// }
-
-// .background__sand {
-//   background-image: url('../../src/assets/background/sand.png');
-//   height: inherit;
-//   width: inherit;
-//   background-size: contain;       // répétitions css
-//   z-index: -1;
-// }

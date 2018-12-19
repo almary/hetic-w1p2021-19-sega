@@ -36,6 +36,31 @@
   background-repeat: no-repeat;
 }
 
+.score {
+  font-family: "upheaval", monospace;
+  color: white;
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  font-size: 30px;
+}
+
+.score--waste {
+  right: 80px;
+}
+
+.score__icon {
+  position: absolute;
+  width: 30px;
+  height: 25px;
+  right: 120px;
+  top: 5px;
+  background-image: url("../../src/assets/waste-icon.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 1;
+}
+
 .sky {
   width: 100vw;
   height: 39vh;
@@ -142,19 +167,6 @@
 .obstacle--rock {
   background-image: url("../../src/assets/rock.png");
   background-size: contain;
-}
-
-.score {
-  font-family: "upheaval", monospace;
-  color: white;
-  position: absolute;
-  z-index: 1;
-  right: 0;
-  font-size: 30px;
-}
-
-.score--waste {
-  right: 80px;
 }
 
 .obstacle--barrel {

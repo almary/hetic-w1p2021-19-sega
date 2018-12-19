@@ -53,9 +53,13 @@ function game() {
   // oxo.animation.moveElementWithArrowKeys(bubbles, 100);
 
   // submarine death
-  oxo.elements.onLeaveScreenOnce(submarine, function() {
-    console.log("end");
-  }, true);
+  oxo.elements.onLeaveScreenOnce(
+    submarine,
+    function() {
+      console.log("end");
+    },
+    true
+  );
 
   // plane moves
   planeInterval = setInterval(function planeMove() {
@@ -75,66 +79,67 @@ function game() {
   }, 50);
 
   // plane drop
-  oxo.inputs.listenKeys(["a", "z", "e"], function(key) {
-    var position = oxo.animation.getPosition(plane);
-    if (key === "a") {
-      var drop = oxo.elements.createElement({
-        type: "div",
-        class: "obstacle--death drop drop--little move move--down",
-        styles: {
-          transform: "translate(" + position.x + "px, 0px)"
-        }
-      });
-    }
-    if (key === "a") {
-      var drop = oxo.elements.createElement({
-        type: "div",
-        class: "obstacle--death drop drop--little move move--down hitboxe",
-        styles: {
-          transform: "translate(" + position.x + "px, 0px)"
-        },
-        appendTo: "#water"
-      });
-    }
-    if (key === "z") {
-      var drop = oxo.elements.createElement({
-        type: "div",
-        class: "obstacle--death drop drop--medium move move--down",
-        styles: {
-          transform: "translate(" + position.x + "px, 0px)"
-        }
-      });
-    }
-    if (key === "z") {
-      var drop = oxo.elements.createElement({
-        type: "div",
-        class: "obstacle--death drop drop--medium move move--down hitboxe",
-        styles: {
-          transform: "translate(" + position.x + "px, 0px)"
-        },
-        appendTo: "#water"
-      });
-    }
-    if (key === "e") {
-      var drop = oxo.elements.createElement({
-        type: "div",
-        class: "obstacle--death drop drop--large move move--down",
-        styles: {
-          transform: "translate(" + position.x + "px, 0px)"
-        }
-      });
-    }
-    if (key === "e") {
-      var drop = oxo.elements.createElement({
-        type: "div",
-        class: "obstacle--death drop drop--large move move--down hitboxe",
-        styles: {
-          transform: "translate(" + position.x + "px, 0px)"
-        },
-        appendTo: "#water"
-      });
-    }
-  });
+    oxo.inputs.listenKeys(["a", "z", "e"], function(key) {
+      var position = oxo.animation.getPosition(plane);
+      if (key === "a") {
+        var drop = oxo.elements.createElement({
+          type: "div",
+          class: "obstacle--death drop drop--little move move--down",
+          styles: {
+            transform: "translate(" + position.x + "px, 0px)"
+          }
+        });
+      }
+      if (key === "a") {
+        var drop = oxo.elements.createElement({
+          type: "div",
+          class: "obstacle--death drop drop--little move move--down hitboxe",
+          styles: {
+            transform: "translate(" + position.x + "px, 0px)"
+          },
+          appendTo: "#water"
+        });
+      }
+      if (key === "z") {
+        var drop = oxo.elements.createElement({
+          type: "div",
+          class: "obstacle--death drop drop--medium move move--down",
+          styles: {
+            transform: "translate(" + position.x + "px, 0px)"
+          }
+        });
+      }
+      if (key === "z") {
+        var drop = oxo.elements.createElement({
+          type: "div",
+          class: "obstacle--death drop drop--medium move move--down hitboxe",
+          styles: {
+            transform: "translate(" + position.x + "px, 0px)"
+          },
+          appendTo: "#water"
+        });
+      }
+      if (key === "e") {
+        var drop = oxo.elements.createElement({
+          type: "div",
+          class: "obstacle--death drop drop--large move move--down",
+          styles: {
+            transform: "translate(" + position.x + "px, 0px)"
+          }
+        });
+      }
+      if (key === "e") {
+        var drop = oxo.elements.createElement({
+          type: "div",
+          class: "obstacle--death drop drop--large move move--down hitboxe",
+          styles: {
+            transform: "translate(" + position.x + "px, 0px)"
+          },
+          appendTo: "#water"
+        });
+      }
+    });
+
 
   // Score
   setInterval(addScore, speed * 100);
@@ -202,7 +207,7 @@ function addObstacle() {
   });
 }
 
-  function addWaste(){
+function addWaste() {
   //Add obstacle--waste to the screen at a random position
   obstacle = oxo.elements.createElement({
     class: "obstacle obstacle--waste obstacle--can move",

@@ -285,6 +285,15 @@ function addBarrel() {
       appendTo: "#water"
     });
   }
+
+  // Check collisions
+  oxo.elements.onCollisionWithElement(submarine, obstacle, function() {
+    obstacle.remove();
+    // Add count waste
+    countWaste++;
+    console.log(countWaste);
+    document.getElementById("score--waste").innerHTML = countWaste;
+  });
 }
 
 function addShark() {
@@ -303,37 +312,16 @@ function addShark() {
       appendTo: "#water"
     });
   }
+
+  // Check collisions
+  oxo.elements.onCollisionWithElement(submarine, obstacle, function() {
+    obstacle.remove();
+    // Add count waste
+    countWaste++;
+    console.log(countWaste);
+    document.getElementById("score--waste").innerHTML = countWaste;
+  });
 }
-
-// function listenCollision() {
-//   var collectable = [];
-//   var death = [];
-//   var submarineLoop = document.querySelector(".submarine"); // changer cette ligne, définir tout en haut ?
-//   var collectable = document.querySelectorAll(".obstacle--waste");
-//   var death = document.querySelectorAll(".obstacle--death");
-//   for (let i = 0; i < collectable.length; i++) {
-//     if (death !== []) {
-//       oxo.elements.onCollisionWithElement(submarineLoop, death[i], function() {
-//         console.log("dead");
-//         // ecran de fin
-//       });
-//     }
-
-//     if (collectable !== []) {
-//       oxo.elements.onCollisionWithElement(
-//         submarineLoop,
-//         collectable[i],
-//         function() {
-//           collectable[i].remove();
-//           // Add count waste
-//           countWaste++;
-//           console.log(countWaste);
-//           document.getElementById("score--waste").innerHTML = countWaste;
-//         }
-//       );
-//     }
-//   }
-// }
 
 function move() {
   var allMovableElements = document.querySelectorAll(".move");

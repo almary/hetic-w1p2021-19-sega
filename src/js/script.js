@@ -25,9 +25,10 @@ var canDrop = true;
 // });
 
 function game() {
-  // if (oxo.screens.getCurrentScreen() !== "game") {
-  //   return;
-  // }
+  if (oxo.screens.getCurrentScreen() !== "game") {
+    console.log('HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH');
+    return;
+  }
 
   //reset scores
   oxo.player.setScore(0);
@@ -362,9 +363,8 @@ function death() {
 
 function end() {
   if (oxo.screens.getCurrentScreen() === "end") {
-    console.log("hey");
     oxo.inputs.listenKey("enter", function() {
-      oxo.screens.loadScreen("game", game);
+        oxo.screens.loadScreen('game', game);
       document.getElementById("end__score--collected").innerHTML = countWaste;
     });
   } else {

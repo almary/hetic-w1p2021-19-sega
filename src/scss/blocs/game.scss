@@ -17,11 +17,20 @@
   }
 
   99% {
-    width: 0px
+    width: 0px;
   }
   100% {
     width: 100px;
   }
+}
+
+.wrap {
+  width: 1280px;
+  height: 800px;
+  position: relative;
+  left: 50%;
+  top: 5%;
+  transform: translateX(-50%);
 }
 
 .submarine {
@@ -66,8 +75,8 @@
 }
 
 .sky {
-  width: 100vw;
-  height: 39vh;
+  width: 1280px;
+  height: 312px;
   position: absolute;
   overflow: hidden;
   background-image: url("../../src/assets/background/sky.png");
@@ -127,8 +136,8 @@
 }
 
 .water {
-  width: 100vw;
-  height: 60vh;
+  width: 1280px;
+  height: 480px;
   position: absolute;
   bottom: -3px;
   background-image: url("../../src/assets/background/ocean.png");
@@ -141,9 +150,9 @@
 
 .waves {
   position: absolute;
-  width: 100vw;
+  width: 1280px;
   height: 80px;
-  bottom: 57vh;
+  bottom: 456px;
   z-index: 2;
   background-image: url("../../src/assets/background/waves.png");
   animation: backgroundScroll 899999s linear infinite;
@@ -196,7 +205,7 @@
 .background {
   position: absolute;
   bottom: 0;
-  width: 100vw;
-  height: 20vh;
+  width: 1280px;
+  height: 160px;
   z-index: 1;
 }

@@ -55,7 +55,7 @@ function game() {
   oxo.elements.onLeaveScreenOnce(
     submarine,
     function() {
-      oxo.screens.loadScreen("end");
+      death();
     },
     true
   );

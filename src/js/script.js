@@ -18,20 +18,11 @@ var pressed = [];
 var submarine;
 var canDrop = true;
 
-// setTimeout(function() {
-// document.getElementById("play").addEventListener("click", function () {       //  pourquoi le clic ne marche pas
+setTimeout(function() {
+document.getElementById("play").addEventListener("click", function () {       //  pourquoi le clic ne marche pas
 oxo.screens.loadScreen("game", game);
-//   });
-// });
-
-// function moveElementWithKeys(element, speed) {
-//   var pixels = speed > 100 ? Math.round(speed / 100) : 1;
-//   var interval;
-//   var pressed = [];
-
-//     document.addEventListener('', function(event) {
-//   }
-// }
+  });
+});
 
 function game() {
   submarine = oxo.elements.createElement({
@@ -51,10 +42,6 @@ function game() {
 
   // submarine moves
   oxo.animation.moveElementWithArrowKeys(submarine, 100);
-
-  //bubbles moves
-  // var bubbles = document.getElementById('bubbles');
-  // oxo.animation.moveElementWithArrowKeys(bubbles, 100);
 
   // submarine death
   oxo.elements.onLeaveScreenOnce(
@@ -167,9 +154,6 @@ function game() {
 
   //Remove
   removeInterval = setInterval(remove, 5000);
-
-  //Acceleration
-  // accelerationInterval = setInterval(acceleration, 100);
 
   //Array key pressed
   document.addEventListener("keydown", function(event) {
@@ -356,10 +340,6 @@ function remove() {
     }
   }
 }
-
-// function acceleration() {
-//   speed = speed - 1; // MARCHE PAS
-// }
 
 function addScore() {
   oxo.player.addToScore(10);

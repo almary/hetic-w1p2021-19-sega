@@ -18,11 +18,11 @@ var pressed = [];
 var submarine;
 var canDrop = true;
 
-setTimeout(function() {
-  document.getElementById("play").addEventListener("click", function () {       //  pourquoi le clic ne marche pas
+// setTimeout(function() {
+  // document.getElementById("play").addEventListener("click", function () {       //  pourquoi le clic ne marche pas
     oxo.screens.loadScreen("game", game);
-  });
-});
+//   });
+// });
 
 
 // function moveElementWithKeys(element, speed) {

@@ -15,10 +15,15 @@ var xObstacle = 1280 / 60;
 var yObstacle = 480 / 60;
 var countWaste = 0;
 var pressed = [];
+var submarine;
+var canDrop = true;
 
-// document.getElementById("play").addEventListener("click", function () {       //  pourquoi le clic ne marche pas
-oxo.screens.loadScreen("game", game);
-// });
+setTimeout(function() {
+  document.getElementById("play").addEventListener("click", function () {       //  pourquoi le clic ne marche pas
+    oxo.screens.loadScreen("game", game);
+  });
+});
+
 
 // function moveElementWithKeys(element, speed) {
 //   var pixels = speed > 100 ? Math.round(speed / 100) : 1;
@@ -30,7 +35,7 @@ oxo.screens.loadScreen("game", game);
 // }
 
 function game() {
-  var submarine = oxo.elements.createElement({
+  submarine = oxo.elements.createElement({
     type: "div",
     class: "submarine",
     styles: {
@@ -81,6 +86,13 @@ function game() {
   // plane drop
     oxo.inputs.listenKeys(["a", "z", "e"], function(key) {
       var position = oxo.animation.getPosition(plane);
+      if (!canDrop) {
+        return;
+      }
+      canDrop = false;
+      setTimeout(function() {
+        canDrop = true;
+      }, 3000);
       if (key === "a") {
         var drop = oxo.elements.createElement({
           type: "div",
@@ -169,7 +181,7 @@ function game() {
   moveDownInterval = setInterval(moveDownLarge, speed);
 
   //collisions
-  collisionInterval = setInterval(listenCollision, 1000);
+  //collisionInterval = setInterval(listenCollision, 1000);
 
   //Remove
   removeInterval = setInterval(remove, 5000);
@@ -193,7 +205,7 @@ function game() {
 
 function addObstacle() {
   // Add an obstacle element to the screen at a random position
-  obstacle = oxo.elements.createElement({
+  var obstacle = oxo.elements.createElement({
     class: "obstacle obstacle--death obstacle--rock move",
     styles: {
       transform:
@@ -204,6 +216,11 @@ function addObstacle() {
         "px)"
     },
     appendTo: "#water"
+  });
+
+  oxo.elements.onCollisionWithElement(submarine, obstacle, function() {
+    console.log("dead");
+    // ecran de fin
   });
 }
 
@@ -273,35 +290,35 @@ function addShark() {
   }
 }
 
-function listenCollision() {
-  var collectable = [];
-  var death = [];
-  var submarineLoop = document.querySelector(".submarine"); // changer cette ligne, définir tout en haut ?
-  var collectable = document.querySelectorAll(".obstacle--waste");
-  var death = document.querySelectorAll(".obstacle--death");
-  for (let i = 0; i < collectable.length; i++) {
-    if (death !== []) {
-      oxo.elements.onCollisionWithElement(submarineLoop, death[i], function() {
-        console.log("dead");
-        // ecran de fin
-      });
-    }
+// function listenCollision() {
+//   var collectable = [];
+//   var death = [];
+//   var submarineLoop = document.querySelector(".submarine"); // changer cette ligne, définir tout en haut ?
+//   var collectable = document.querySelectorAll(".obstacle--waste");
+//   var death = document.querySelectorAll(".obstacle--death");
+//   for (let i = 0; i < collectable.length; i++) {
+//     if (death !== []) {
+//       oxo.elements.onCollisionWithElement(submarineLoop, death[i], function() {
+//         console.log("dead");
+//         // ecran de fin
+//       });
+//     }
 
-    if (collectable !== []) {
-      oxo.elements.onCollisionWithElement(
-        submarineLoop,
-        collectable[i],
-        function() {
-          collectable[i].remove();
-          // Add count waste
-          countWaste++;
-          console.log(countWaste);
-          document.getElementById("score--waste").innerHTML = countWaste;
-        }
-      );
-    }
-  }
-}
+//     if (collectable !== []) {
+//       oxo.elements.onCollisionWithElement(
+//         submarineLoop,
+//         collectable[i],
+//         function() {
+//           collectable[i].remove();
+//           // Add count waste
+//           countWaste++;
+//           console.log(countWaste);
+//           document.getElementById("score--waste").innerHTML = countWaste;
+//         }
+//       );
+//     }
+//   }
+// }
 
 function move() {
   var allMovableElements = document.querySelectorAll(".move");

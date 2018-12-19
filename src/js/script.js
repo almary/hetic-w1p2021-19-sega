@@ -311,7 +311,7 @@ function moveDownLittle() {
   );
   for (let i = 0; i < allMovableElements.length; i++) {
     var position = oxo.animation.getPosition(allMovableElements[i]);
-    if (position.y < 210) {
+    if (position.y < 220) {
       oxo.animation.move(allMovableElements[i], "down", 10, true);
     } else {
       allMovableElements[i].classList.remove("move--down");

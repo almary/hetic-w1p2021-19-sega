@@ -79,12 +79,15 @@ function game() {
 
   // plane drop
   oxo.inputs.listenKeys(["a", "z", "e"], function(key) {
+    var skyBar = document.getElementById('sky__bar');
     var position = oxo.animation.getPosition(plane);
+    skyBar.classList.add('isTriggered');
     if (!canDrop) {
       return;
     }
     canDrop = false;
     setTimeout(function() {
+      skyBar.classList.remove('isTriggered');
       canDrop = true;
     }, 1500);
     if (key === "a") {

@@ -55,7 +55,7 @@ function game() {
   // submarine death
   oxo.elements.onLeaveScreenOnce(submarine, function() {
     console.log("end");
-  });
+  }, true);
 
   // plane moves
   planeInterval = setInterval(function planeMove() {

@@ -248,7 +248,7 @@ window.oxo = {
      * @param {boolean} once - If true, the action will be executed only once
      * @return {IntersectionObserver} - The observer
      */
-    onLeaveScreen(element, action, once) {
+    onLeaveScreen(element, action, completly, once) {
       var observer = new IntersectionObserver(
         function(entries) {
           entries.forEach(function(entry) {
@@ -264,7 +264,7 @@ window.oxo = {
         {
           root: null,
           rootMargin: '0px',
-          threshold: 1.0,
+          threshold: completly ? 0 : 1,
         }
       );
       observer.observe(element);
@@ -278,8 +278,8 @@ window.oxo = {
      * @param {Function} action - The action to execute
      * @return {IntersectionObserver} - The observer
      */
-    onLeaveScreenOnce(element, action) {
-      return oxo.elements.onLeaveScreen(element, action, true);
+    onLeaveScreenOnce(element, action, completly) {
+      return oxo.elements.onLeaveScreen(element, action, completly, true);
     },
 
     /**

@@ -1,11 +1,9 @@
-.home__background,
-.home__logo,
-.home__play,
-.home__instructions {
+.end__background, .end__text, .end__score {
   position: absolute;
 }
 
-.home__background {
+.end__background {
+  position: absolute;
   width: 100vw;
   height: 100vh;
   background-image: url("../../src/assets/background/ocean-full.png");
@@ -13,7 +11,7 @@
   animation: backgroundScroll 5999999s linear infinite;
 }
 
-.home__logo {
+.end__text {
   margin-left: auto;
   margin-right: auto;
   left: 0;
@@ -21,33 +19,20 @@
   top: 30vh;
   width: 700px;
   height: 500px;
-  background-image: url("../../src/assets/logo.png");
+  background-image: url("../../src/assets/gameover.png");
   background-repeat: no-repeat;
-}
-
-.home__background,
-.home__logo {
   background-size: contain;
 }
 
-.home__play,
-.home__instructions {
+.end__score {
   font-family: "upheaval", monospace;
+  font-size: 50px;
   color: white;
   width: 100vw;
   text-align: center;
+  top: 60vh;
 }
 
-.home__play {
-  font-size: 80px;
-  top: 55vh;
-}
-
-.home__play:hover {
-  cursor: pointer;
-}
-
-.home__instructions {
-  font-size: 45px;
-  top: 70vh;
+.end__score--oxo {
+  top: 70vh
 }

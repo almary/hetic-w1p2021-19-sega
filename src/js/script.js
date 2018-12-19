@@ -25,6 +25,10 @@ oxo.screens.loadScreen("game", game);
 // });
 
 function game() {
+  if (oxo.screens.getCurrentScreen() === 'end') {
+    return;
+  }
+
   submarine = oxo.elements.createElement({
     type: "div",
     class: "submarine",
@@ -47,7 +51,7 @@ function game() {
   oxo.elements.onLeaveScreenOnce(
     submarine,
     function() {
-      console.log("end");
+      oxo.screens.loadScreen("end");
     },
     true
   );
@@ -88,8 +92,8 @@ function game() {
         }
       });
       oxo.elements.onCollisionWithElement(submarine, drop, function() {
-        console.log("dead");
-        // ecran de fin
+        // launch ending screen function
+        death();
       });
     }
 
@@ -102,8 +106,8 @@ function game() {
         }
       });
       oxo.elements.onCollisionWithElement(submarine, drop, function() {
-        console.log("dead");
-        // ecran de fin
+        // launch ending screen function
+        death();
       });
     }
 
@@ -116,8 +120,8 @@ function game() {
         }
       });
       oxo.elements.onCollisionWithElement(submarine, drop, function() {
-        console.log("dead");
-        // ecran de fin
+        // launch ending screen function
+        death();
       });
     }
   });
@@ -148,9 +152,6 @@ function game() {
 
   //Move Down Large
   moveDownInterval = setInterval(moveDownLarge, speed);
-
-  //collisions
-  //collisionInterval = setInterval(listenCollision, 1000);
 
   //Remove
   removeInterval = setInterval(remove, 5000);
@@ -186,8 +187,8 @@ function addObstacle() {
 
   // Check collisions
   oxo.elements.onCollisionWithElement(submarine, obstacle, function() {
-    console.log("dead");
-    // ecran de fin
+    // launch ending screen function
+    death();
   });
 }
 
@@ -256,7 +257,8 @@ function addBarrel() {
 
   // Check collisions
   oxo.elements.onCollisionWithElement(submarine, obstacle, function() {
-    obstacle.remove();
+    // launch ending screen function
+    death();
   });
 }
 
@@ -278,7 +280,9 @@ function addShark() {
   }
 
   // Check collisions
-  oxo.elements.onCollisionWithElement(submarine, obstacle, function() { 
+  oxo.elements.onCollisionWithElement(submarine, obstacle, function() {
+    // launch ending screen function
+    death();
   });
 }
 
@@ -342,4 +346,12 @@ function remove() {
 
 function addScore() {
   oxo.player.addToScore(10);
+}
+
+function death() {
+  oxo.screens.loadScreen("end", end);
+}
+
+function end() {
+  console.log('hey');
 }

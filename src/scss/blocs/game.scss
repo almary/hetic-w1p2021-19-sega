@@ -21,7 +21,7 @@
 }
 
 .submarine {
-  height: 80px;
+  height: 72px;
   width: 120px;
   background-image: url("../../src/assets/submarine.gif");
   background-size: contain;
@@ -75,13 +75,13 @@
 .sky__bar {
   position: absolute;
   width: 100px;
-  height: 1px;
+  height: 2px;
   right: 370px;
   top: 75px;
 }
 
 .sky__bar {
-  border: black 2px solid; // FFFC31
+  background: black; // FFFC31
 }
 
 

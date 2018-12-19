@@ -200,7 +200,7 @@ function addObstacle() {
         "translate(" +
         (oxo.utils.getRandomNumber(0, xObstacle - 1) * size + 1280) +
         "px, " +
-        oxo.utils.getRandomNumber(0, yObstacle - 1) * size +
+        oxo.utils.getRandomNumber(-2, yObstacle - 1) * size +
         "px)"
     },
     appendTo: "#water"

@@ -10,8 +10,8 @@ var collisionInterval;
 var accelerationInterval;
 var planeInterval;
 var size = 40;
-var xObstacle = 1280 / 40;
-var yObstacle = 480 / 40;
+var xObstacle = 1280 / 60;
+var yObstacle = 480 / 60;
 var countWaste = 0;
 var pressed = [];
 
@@ -139,10 +139,10 @@ function game() {
   setInterval(addScore, speed * 100);
 
   //Obstacles
-  obstacleInterval = setInterval(addObstacle, 1500);
+  obstacleInterval = setInterval(addObstacle, 1000);
 
   //Add Barrel
-  barrelInterval = setInterval(addBarrel, 10000);
+  barrelInterval = setInterval(addBarrel, 7000);
 
   //Add Shark
   sharkInterval = setInterval(addShark, 7000);
@@ -213,16 +213,7 @@ function addObstacle() {
 }
 
 function addBarrel() {
-//   //Add obstacle--boat hitboxe in the water
-  // if (oxo.player.getScore() > 200) {
-//     obstacle = oxo.elements.createElement({
-//       class: "obstacle obstacle--death obstacle--boat hitboxe--boat move",
-//       styles: {
-//         transform: "translate(" + (3 * size + 1280) + "px, " + -4 * size + "px); z-index: 2"
-//       },
-//       appendTo: "#water"
-//     });
-
+  if (oxo.player.getScore() > 200) {
     // add sprite barrel on the water
     obstacle = oxo.elements.createElement({
       class: "obstacle obstacle--death obstacle--barrel move",
@@ -237,7 +228,7 @@ function addBarrel() {
       appendTo: "#water"
     });
   }
-// }
+}
 
 function addShark() {
   //Add obstacle--shark

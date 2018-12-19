@@ -19,11 +19,10 @@ var submarine;
 var canDrop = true;
 
 // setTimeout(function() {
-  // document.getElementById("play").addEventListener("click", function () {       //  pourquoi le clic ne marche pas
-    oxo.screens.loadScreen("game", game);
+// document.getElementById("play").addEventListener("click", function () {       //  pourquoi le clic ne marche pas
+oxo.screens.loadScreen("game", game);
 //   });
 // });
-
 
 // function moveElementWithKeys(element, speed) {
 //   var pixels = speed > 100 ? Math.round(speed / 100) : 1;
@@ -84,74 +83,73 @@ function game() {
   }, 50);
 
   // plane drop
-    oxo.inputs.listenKeys(["a", "z", "e"], function(key) {
-      var position = oxo.animation.getPosition(plane);
-      if (!canDrop) {
-        return;
-      }
-      canDrop = false;
-      setTimeout(function() {
-        canDrop = true;
-      }, 3000);
-      if (key === "a") {
-        var drop = oxo.elements.createElement({
-          type: "div",
-          class: "obstacle--death drop drop--little move move--down",
-          styles: {
-            transform: "translate(" + position.x + "px, 0px)"
-          }
-        });
-      }
-      if (key === "a") {
-        var drop = oxo.elements.createElement({
-          type: "div",
-          class: "obstacle--death drop drop--little move move--down hitboxe",
-          styles: {
-            transform: "translate(" + position.x + "px, 0px)"
-          },
-          appendTo: "#water"
-        });
-      }
-      if (key === "z") {
-        var drop = oxo.elements.createElement({
-          type: "div",
-          class: "obstacle--death drop drop--medium move move--down",
-          styles: {
-            transform: "translate(" + position.x + "px, 0px)"
-          }
-        });
-      }
-      if (key === "z") {
-        var drop = oxo.elements.createElement({
-          type: "div",
-          class: "obstacle--death drop drop--medium move move--down hitboxe",
-          styles: {
-            transform: "translate(" + position.x + "px, 0px)"
-          },
-          appendTo: "#water"
-        });
-      }
-      if (key === "e") {
-        var drop = oxo.elements.createElement({
-          type: "div",
-          class: "obstacle--death drop drop--large move move--down",
-          styles: {
-            transform: "translate(" + position.x + "px, 0px)"
-          }
-        });
-      }
-      if (key === "e") {
-        var drop = oxo.elements.createElement({
-          type: "div",
-          class: "obstacle--death drop drop--large move move--down hitboxe",
-          styles: {
-            transform: "translate(" + position.x + "px, 0px)"
-          },
-          appendTo: "#water"
-        });
-      }
-    });
-
+  oxo.inputs.listenKeys(["a", "z", "e"], function(key) {
+    var position = oxo.animation.getPosition(plane);
+    if (!canDrop) {
+      return;
+    }
+    canDrop = false;
+    setTimeout(function() {
+      canDrop = true;
+    }, 3000);
+    if (key === "a") {
+      var drop = oxo.elements.createElement({
+        type: "div",
+        class: "obstacle--death drop drop--little move move--down",
+        styles: {
+          transform: "translate(" + position.x + "px, 0px)"
+        }
+      });
+    }
+    if (key === "a") {
+      var drop = oxo.elements.createElement({
+        type: "div",
+        class: "obstacle--death drop drop--little move move--down hitboxe",
+        styles: {
+          transform: "translate(" + position.x + "px, 0px)"
+        },
+        appendTo: "#water"
+      });
+    }
+    if (key === "z") {
+      var drop = oxo.elements.createElement({
+        type: "div",
+        class: "obstacle--death drop drop--medium move move--down",
+        styles: {
+          transform: "translate(" + position.x + "px, 0px)"
+        }
+      });
+    }
+    if (key === "z") {
+      var drop = oxo.elements.createElement({
+        type: "div",
+        class: "obstacle--death drop drop--medium move move--down hitboxe",
+        styles: {
+          transform: "translate(" + position.x + "px, 0px)"
+        },
+        appendTo: "#water"
+      });
+    }
+    if (key === "e") {
+      var drop = oxo.elements.createElement({
+        type: "div",
+        class: "obstacle--death drop drop--large move move--down",
+        styles: {
+          transform: "translate(" + position.x + "px, 0px)"
+        }
+      });
+    }
+    if (key === "e") {
+      var drop = oxo.elements.createElement({
+        type: "div",
+        class: "obstacle--death drop drop--large move move--down hitboxe",
+        styles: {
+          transform: "translate(" + position.x + "px, 0px)"
+        },
+        appendTo: "#water"
+      });
+    }
+  });
 
   // Score
   setInterval(addScore, speed * 100);
@@ -218,6 +216,7 @@ function addObstacle() {
     appendTo: "#water"
   });
 
+  // Check collisions
   oxo.elements.onCollisionWithElement(submarine, obstacle, function() {
     console.log("dead");
     // ecran de fin
@@ -226,7 +225,7 @@ function addObstacle() {
 
 function addWaste() {
   //Add obstacle--waste to the screen at a random position
-  obstacle = oxo.elements.createElement({
+  var obstacle = oxo.elements.createElement({
     class: "obstacle obstacle--waste obstacle--can move",
     styles: {
       transform:
@@ -240,7 +239,7 @@ function addWaste() {
   });
 
   //Add obstacle--waste to the screen at a random position
-  obstacle = oxo.elements.createElement({
+  var obstacle_bag = oxo.elements.createElement({
     class: "obstacle obstacle--waste obstacle--bag move",
     styles: {
       transform:
@@ -252,12 +251,28 @@ function addWaste() {
     },
     appendTo: "#water"
   });
+
+  // Check collisions
+  oxo.elements.onCollisionWithElement(submarine, obstacle_bag, function() {
+    obstacle_bag.remove();
+    // Add count waste
+    countWaste++;
+    console.log(countWaste);
+    document.getElementById("score--waste").innerHTML = countWaste;
+  });
+  oxo.elements.onCollisionWithElement(submarine, obstacle, function() {
+    obstacle.remove();
+    // Add count waste
+    countWaste++;
+    console.log(countWaste);
+    document.getElementById("score--waste").innerHTML = countWaste;
+  });
 }
 
 function addBarrel() {
   if (oxo.player.getScore() > 200) {
     // add sprite barrel on the water
-    obstacle = oxo.elements.createElement({
+    var obstacle = oxo.elements.createElement({
       class: "obstacle obstacle--death obstacle--barrel move",
       styles: {
         transform:
@@ -275,7 +290,7 @@ function addBarrel() {
 function addShark() {
   //Add obstacle--shark
   if (oxo.player.getScore() > 100) {
-    obstacle = oxo.elements.createElement({
+    var obstacle = oxo.elements.createElement({
       class: "obstacle obstacle--death obstacle--shark move",
       styles: {
         transform:

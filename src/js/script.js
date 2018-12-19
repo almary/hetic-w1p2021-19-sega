@@ -83,7 +83,16 @@ function game() {
         styles: {
           transform: "translate(" + position.x + "px, 0px)"
         }
-        // appendTo: "#water"
+      });
+    }
+    if (key === "a") {
+      var drop = oxo.elements.createElement({
+        type: "div",
+        class: "obstacle--death drop drop--little move move--down hitboxe",
+        styles: {
+          transform: "translate(" + position.x + "px, 0px)"
+        },
+        appendTo: "#water"
       });
     }
     if (key === "z") {
@@ -93,7 +102,16 @@ function game() {
         styles: {
           transform: "translate(" + position.x + "px, 0px)"
         }
-        // appendTo: "#water"
+      });
+    }
+    if (key === "z") {
+      var drop = oxo.elements.createElement({
+        type: "div",
+        class: "obstacle--death drop drop--medium move move--down hitboxe",
+        styles: {
+          transform: "translate(" + position.x + "px, 0px)"
+        },
+        appendTo: "#water"
       });
     }
     if (key === "e") {
@@ -103,7 +121,16 @@ function game() {
         styles: {
           transform: "translate(" + position.x + "px, 0px)"
         }
-        // appendTo: "#water"
+      });
+    }
+    if (key === "e") {
+      var drop = oxo.elements.createElement({
+        type: "div",
+        class: "obstacle--death drop drop--large move move--down hitboxe",
+        styles: {
+          transform: "translate(" + position.x + "px, 0px)"
+        },
+        appendTo: "#water"
       });
     }
   });
@@ -123,8 +150,14 @@ function game() {
   //Move
   moveInterval = setInterval(move, speed);
 
-  //Move Down
-  moveDownInterval = setInterval(moveDown, speed);
+  //Move Down Little
+  moveDownInterval = setInterval(moveDownLittle, speed);
+
+  //Move Down Medium
+  moveDownInterval = setInterval(moveDownMedium, speed);
+
+  //Move Down Large
+  moveDownInterval = setInterval(moveDownLarge, speed);
 
   //collisions
   collisionInterval = setInterval(listenCollision, 1000);
@@ -183,7 +216,7 @@ function addBoat() {
   //Add obstacle--boat hitboxe in the water
   if (oxo.player.getScore() > 200) {
     obstacle = oxo.elements.createElement({
-      class: "obstacle obstacle--death obstacle--boat hitboxe move",
+      class: "obstacle obstacle--death obstacle--boat hitboxe--boat move",
       styles: {
         transform: "translate(" + (3 * size + 1280) + "px, " + -4 * size + "px)"
       },
@@ -256,11 +289,35 @@ function move() {
   }
 }
 
-function moveDown() {
-  var allMovableElements = document.querySelectorAll(".move--down");
+function moveDownLittle() {
+  var allMovableElements = document.querySelectorAll(".move--down.drop--little");
   for (let i = 0; i < allMovableElements.length; i++) {
     var position = oxo.animation.getPosition(allMovableElements[i]);
-    if (position.y < oxo.utils.getRandomNumber(100, 1800)) {
+    if (position.y < 230) {
+      oxo.animation.move(allMovableElements[i], "down", 10, true);
+    } else {
+      allMovableElements[i].classList.remove("move--down");
+    }
+  }
+}
+
+function moveDownMedium() {
+  var allMovableElements = document.querySelectorAll(".move--down.drop--medium");
+  for (let i = 0; i < allMovableElements.length; i++) {
+    var position = oxo.animation.getPosition(allMovableElements[i]);
+    if (position.y < 350) {
+      oxo.animation.move(allMovableElements[i], "down", 10, true);
+    } else {
+      allMovableElements[i].classList.remove("move--down");
+    }
+  }
+}
+
+function moveDownLarge() {
+  var allMovableElements = document.querySelectorAll(".move--down.drop--large");
+  for (let i = 0; i < allMovableElements.length; i++) {
+    var position = oxo.animation.getPosition(allMovableElements[i]);
+    if (position.y < 500) {
       oxo.animation.move(allMovableElements[i], "down", 10, true);
     } else {
       allMovableElements[i].classList.remove("move--down");

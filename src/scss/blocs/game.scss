@@ -83,9 +83,9 @@
   bottom: -3px;
   background-image: url("../../src/assets/background/ocean.png");
   z-index: 1;
-  overflow: hidden;
   -webkit-animation: backgroundScroll 799999s linear infinite;
   animation: backgroundScroll 799999s linear infinite;
+  overflow: hidden;
 }
 
 .waves {
@@ -165,7 +165,8 @@
   background-repeat: no-repeat;
 }
 
-.hitboxe {
+.hitboxe {  //pb pour hitbox boat ?
+  top: -150px;
   visibility: hidden;
 }
 

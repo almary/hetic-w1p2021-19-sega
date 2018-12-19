@@ -278,8 +278,7 @@ function addShark() {
   }
 
   // Check collisions
-  oxo.elements.onCollisionWithElement(submarine, obstacle, function() {
-    obstacle.remove();
+  oxo.elements.onCollisionWithElement(submarine, obstacle, function() { 
   });
 }
 

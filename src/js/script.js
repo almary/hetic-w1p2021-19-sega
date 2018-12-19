@@ -15,7 +15,7 @@ var yObstacle = 480 / 60;
 var countWaste = 0;
 var pressed = [];
 
-// document.getElementById("play").addEventListener("click", function() {                                                                 pourquoi le clic ne marche pas
+// document.getElementById("play").addEventListener("click", function() {         pourquoi le clic ne marche pas
 oxo.screens.loadScreen("game", game);
 // });
 
@@ -291,7 +291,7 @@ function moveDownLittle() {
   );
   for (let i = 0; i < allMovableElements.length; i++) {
     var position = oxo.animation.getPosition(allMovableElements[i]);
-    if (position.y < 230) {
+    if (position.y < 210) {
       oxo.animation.move(allMovableElements[i], "down", 10, true);
     } else {
       allMovableElements[i].classList.remove("move--down");

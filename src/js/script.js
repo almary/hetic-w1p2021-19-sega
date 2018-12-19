@@ -1,6 +1,7 @@
 var speed = 20;
 var keyPlane = [];
 var obstacleInterval;
+var wasteInterval;
 var moveInterval;
 var moveDownInterval;
 var removeInterval;
@@ -141,11 +142,14 @@ function game() {
   //Obstacles
   obstacleInterval = setInterval(addObstacle, 1300);
 
+  // Add Wastes
+  wasteInterval = setInterval(addWaste, 2000);
+
   //Add Barrel
-  barrelInterval = setInterval(addBarrel, 14000);
+  barrelInterval = setInterval(addBarrel, 8000);
 
   //Add Shark
-  sharkInterval = setInterval(addShark, 10000);
+  sharkInterval = setInterval(addShark, 12000);
 
   //Move
   moveInterval = setInterval(move, speed);
@@ -196,10 +200,26 @@ function addObstacle() {
     },
     appendTo: "#water"
   });
+}
+
+  function addWaste(){
+  //Add obstacle--waste to the screen at a random position
+  obstacle = oxo.elements.createElement({
+    class: "obstacle obstacle--waste obstacle--can move",
+    styles: {
+      transform:
+        "translate(" +
+        (oxo.utils.getRandomNumber(0, xObstacle - 1) * size + 1280) +
+        "px, " +
+        oxo.utils.getRandomNumber(0, yObstacle - 1) * size +
+        "px)"
+    },
+    appendTo: "#water"
+  });
 
   //Add obstacle--waste to the screen at a random position
   obstacle = oxo.elements.createElement({
-    class: "obstacle obstacle--waste move",
+    class: "obstacle obstacle--waste obstacle--bag move",
     styles: {
       transform:
         "translate(" +

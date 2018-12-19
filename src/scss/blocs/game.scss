@@ -67,7 +67,7 @@
   z-index: 2;
   background-image: url("../../src/assets/brick.png");
   background-size: contain;
-  background-repeat: no-repeat
+  background-repeat: no-repeat;
 }
 
 .drop--medium {
@@ -94,7 +94,7 @@
   overflow: hidden;
 }
 
-                                                                    //sass ici
+//sass ici
 
 .waves {
   position: absolute;
@@ -102,11 +102,11 @@
   height: 80px;
   bottom: 57vh;
   z-index: 2;
-  background-image: url('../../src/assets/background/waves.png');
+  background-image: url("../../src/assets/background/waves.png");
   -webkit-animation: backgroundScroll 899999s linear infinite;
   animation: backgroundScroll 899999s linear infinite;
 
-                                                                       //regler toutes les répétitions de background css et z index et position absolute et contain
+  //regler toutes les répétitions de background css et z index et position absolute et contain
 }
 
 // .water__bubbles {
@@ -127,8 +127,16 @@
 }
 
 .obstacle--waste {
-  background-image: url("../../src/assets/can.png");
   background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.obstacle--can {
+  background-image: url("../../src/assets/can.png");
+}
+
+.obstacle--bag {
+  background-image: url("../../src/assets/bag.png");
 }
 
 .obstacle--rock {
@@ -170,7 +178,7 @@
   position: absolute;
   width: 160px;
   height: 100px;
-  background-image: url('../../src/assets/shark.gif');
+  background-image: url("../../src/assets/shark.gif");
   background-size: contain;
   background-repeat: no-repeat;
 }

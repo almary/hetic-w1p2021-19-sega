@@ -62,15 +62,18 @@ function game() {
 
   // plane moves
   planeInterval = setInterval(function planeMove() {
+    skyBar = document.getElementById("sky__bar");
     if (pressed.length !== 0) {
       for (let i = 0; i < pressed.length; i++) {
         if (pressed[i] === "q") {
           oxo.animation.move(plane, "left", 10);
+          oxo.animation.move(skyBar, "left", 10);
         }
         if (pressed[i] === "d") {
           var position = oxo.animation.getPosition(plane);
           if (position.x < 320) {
             oxo.animation.move(plane, "right", 10);
+            oxo.animation.move(skyBar, "right", 10);
           }
         }
       }
@@ -79,7 +82,6 @@ function game() {
 
   // plane drop
   oxo.inputs.listenKeys(["a", "z", "e"], function(key) {
-    var skyBar = document.getElementById("sky__bar");
     var position = oxo.animation.getPosition(plane);
     skyBar.classList.add("isTriggered");
     if (!canDrop) {

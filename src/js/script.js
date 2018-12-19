@@ -353,7 +353,8 @@ function addScore() {
 }
 
 function death() {
-  oxo.screens.loadScreen("end", end);
+  console.log('death');
+  // oxo.screens.loadScreen("end", end);
 }
 
 function end() {

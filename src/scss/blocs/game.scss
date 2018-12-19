@@ -142,12 +142,13 @@
   right: 80px;
 }
 
-.obstacle--boat {
-  width: 270px;
+.obstacle--barrel {
+  width: 90px;
   height: 120px;
-  background-image: url("../../src/assets/boat.png");
+  background-image: url("../../src/assets/barrel.png");
   background-size: contain;
-  z-index: 2;
+  border: red 2px solid;
+  background-repeat: no-repeat;
 }
 
 // .water__top {

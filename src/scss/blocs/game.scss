@@ -79,7 +79,7 @@
 .drop--large {
   width: 90px;
   height: 90px;
-  background-image: url("../../src/assets/barrel.png");
+  background-image: url("../../src/assets/barrel-tnt.png");
 }
 
 .water {
@@ -137,11 +137,12 @@
 }
 
 .score {
+  font-family: "upheaval", monospace;
+  color: white;
   position: absolute;
   z-index: 1;
   right: 0;
   font-size: 30px;
-  font-family: monospace;
 }
 
 .score--waste {

@@ -16,7 +16,7 @@ var countWaste = 0;
 var pressed = [];
 
 // document.getElementById("play").addEventListener("click", function() {                                                                 pourquoi le clic ne marche pas
-  oxo.screens.loadScreen("game", game);
+oxo.screens.loadScreen("game", game);
 // });
 
 // function moveElementWithKeys(element, speed) {
@@ -139,13 +139,13 @@ function game() {
   setInterval(addScore, speed * 100);
 
   //Obstacles
-  obstacleInterval = setInterval(addObstacle, 1000);
+  obstacleInterval = setInterval(addObstacle, 1300);
 
   //Add Barrel
-  barrelInterval = setInterval(addBarrel, 7000);
+  barrelInterval = setInterval(addBarrel, 14000);
 
   //Add Shark
-  sharkInterval = setInterval(addShark, 7000);
+  sharkInterval = setInterval(addShark, 10000);
 
   //Move
   moveInterval = setInterval(move, speed);
@@ -286,7 +286,9 @@ function move() {
 }
 
 function moveDownLittle() {
-  var allMovableElements = document.querySelectorAll(".move--down.drop--little");
+  var allMovableElements = document.querySelectorAll(
+    ".move--down.drop--little"
+  );
   for (let i = 0; i < allMovableElements.length; i++) {
     var position = oxo.animation.getPosition(allMovableElements[i]);
     if (position.y < 230) {
@@ -298,7 +300,9 @@ function moveDownLittle() {
 }
 
 function moveDownMedium() {
-  var allMovableElements = document.querySelectorAll(".move--down.drop--medium");
+  var allMovableElements = document.querySelectorAll(
+    ".move--down.drop--medium"
+  );
   for (let i = 0; i < allMovableElements.length; i++) {
     var position = oxo.animation.getPosition(allMovableElements[i]);
     if (position.y < 350) {

@@ -18,11 +18,11 @@ var pressed = [];
 var submarine;
 var canDrop = true;
 
-setTimeout(function() {
-document.getElementById("play").addEventListener("click", function () {
+// setTimeout(function() {
+// document.getElementById("play").addEventListener("click", function () {
 oxo.screens.loadScreen("game", game);
-  }, 100);
-});
+//   });
+// });
 
 function game() {
   submarine = oxo.elements.createElement({

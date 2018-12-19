@@ -30,9 +30,17 @@
   color: white;
   width: 100vw;
   text-align: center;
-  top: 60vh;
+  top: 55vh;
 }
 
 .end__score--oxo {
-  top: 70vh
+  top: 60vh
+}
+
+.end__score--waste {
+  top: 70vh;
+}
+
+.end__score--collected {
+  top: 75vh;
 }

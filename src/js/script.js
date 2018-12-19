@@ -18,16 +18,20 @@ var pressed = [];
 var submarine;
 var canDrop = true;
 
-// setTimeout(function() {
-// document.getElementById("play").addEventListener("click", function () {
-oxo.screens.loadScreen("game", game);
-//   });
-// });
+setTimeout(function() {
+  document.getElementById("play").addEventListener("click", function() {
+    oxo.screens.loadScreen("game", game);
+  });
+});
 
 function game() {
-  if (oxo.screens.getCurrentScreen() === 'end') {
-    return;
-  }
+  // if (oxo.screens.getCurrentScreen() !== "game") {
+  //   return;
+  // }
+
+  //reset scores
+  oxo.player.setScore(0);
+  countWaste = 0;
 
   submarine = oxo.elements.createElement({
     type: "div",
@@ -353,5 +357,13 @@ function death() {
 }
 
 function end() {
-  console.log('hey');
+  if (oxo.screens.getCurrentScreen() === "end") {
+    console.log("hey");
+    oxo.inputs.listenKey("enter", function() {
+      oxo.screens.loadScreen("game", game);
+      document.getElementById("end__score--collected").innerHTML = countWaste;
+    });
+  } else {
+    return;
+  }
 }

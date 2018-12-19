@@ -29,8 +29,8 @@
   height: 800px;
   position: relative;
   left: 50%;
-  top: 5%;
   transform: translateX(-50%);
+  overflow: hidden;
 }
 
 .submarine {
@@ -55,19 +55,20 @@
   position: absolute;
   z-index: 1;
   right: 0;
-  font-size: 30px;
+  font-size: 40px;
 }
 
 .score--waste {
-  right: 80px;
+  right: 47px;
+  top: 45px;
 }
 
 .score__icon {
   position: absolute;
-  width: 30px;
-  height: 25px;
-  right: 120px;
-  top: 5px;
+  width: 40px;
+  height: 30px;
+  right: 0;
+  top: 50px;
   background-image: url("../../src/assets/waste-icon.png");
   background-size: contain;
   background-repeat: no-repeat;
@@ -113,8 +114,8 @@
 .drop {
   position: absolute;
   // background: purple;
-  top: 170px;
-  left: 850px;
+  top: 180px;
+  left: 800px;
   width: 60px;
   height: 60px;
   z-index: 2;

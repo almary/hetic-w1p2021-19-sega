@@ -1,11 +1,20 @@
+.end__wrap {
+  width: 1280px;
+  height: 800px;
+  position: relative;
+  left: 50%;
+  top: 5%;
+  transform: translateX(-50%);
+}
+
 .end__background, .end__text, .end__score {
   position: absolute;
 }
 
 .end__background {
   position: absolute;
-  width: 100vw;
-  height: 100vh;
+  width: 1280px;
+  height: 800px;
   background-image: url("../../src/assets/background/ocean-full.png");
   -webkit-animation: backgroundScroll 5999999s linear infinite;
   animation: backgroundScroll 5999999s linear infinite;
@@ -16,7 +25,7 @@
   margin-right: auto;
   left: 0;
   right: 0;
-  top: 30vh;
+  top: 240px;
   width: 700px;
   height: 500px;
   background-image: url("../../src/assets/gameover.png");
@@ -28,19 +37,19 @@
   font-family: "upheaval", monospace;
   font-size: 50px;
   color: white;
-  width: 100vw;
+  width: 1280px;
   text-align: center;
-  top: 55vh;
+  top: 440px;
 }
 
 .end__score--oxo {
-  top: 60vh
+  top: 480px;
 }
 
 .end__score--waste {
-  top: 70vh;
+  top: 560px;
 }
 
 .end__score--collected {
-  top: 75vh;
+  top: 600px;
 }

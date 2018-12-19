@@ -20,15 +20,14 @@ var canDrop = true;
 
 // setTimeout(function() {
 //   document.getElementById("play").addEventListener("click", function() {
-    oxo.screens.loadScreen("game", game);
+oxo.screens.loadScreen("game", game);
 //   });
 // });
 
 function game() {
-  if (oxo.screens.getCurrentScreen() !== "game") {
-    console.log('HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH');
-    return;
-  }
+  // if (oxo.screens.getCurrentScreen() !== "game") {
+  //   return;
+  // }
 
   //reset scores
   oxo.player.setScore(0);
@@ -80,15 +79,15 @@ function game() {
 
   // plane drop
   oxo.inputs.listenKeys(["a", "z", "e"], function(key) {
-    var skyBar = document.getElementById('sky__bar');
+    var skyBar = document.getElementById("sky__bar");
     var position = oxo.animation.getPosition(plane);
-    skyBar.classList.add('isTriggered');
+    skyBar.classList.add("isTriggered");
     if (!canDrop) {
       return;
     }
     canDrop = false;
     setTimeout(function() {
-      skyBar.classList.remove('isTriggered');
+      skyBar.classList.remove("isTriggered");
       canDrop = true;
     }, 1500);
     if (key === "a") {
@@ -97,7 +96,8 @@ function game() {
         class: "obstacle--death drop drop--little move move--down",
         styles: {
           transform: "translate(" + position.x + "px, 0px)"
-        }
+        },
+        appendTo: '#wrap'
       });
       oxo.elements.onCollisionWithElement(submarine, drop, function() {
         // launch ending screen function
@@ -111,7 +111,8 @@ function game() {
         class: "obstacle--death drop drop--medium move move--down",
         styles: {
           transform: "translate(" + position.x + "px, 0px)"
-        }
+        },
+        appendTo: '#wrap'
       });
       oxo.elements.onCollisionWithElement(submarine, drop, function() {
         // launch ending screen function
@@ -125,7 +126,8 @@ function game() {
         class: "obstacle--death drop drop--large move move--down",
         styles: {
           transform: "translate(" + position.x + "px, 0px)"
-        }
+        },
+        appendTo: '#wrap'
       });
       oxo.elements.onCollisionWithElement(submarine, drop, function() {
         // launch ending screen function
@@ -357,14 +359,14 @@ function addScore() {
 }
 
 function death() {
-  console.log('death');
+  console.log("death");
   // oxo.screens.loadScreen("end", end);
 }
 
 function end() {
   if (oxo.screens.getCurrentScreen() === "end") {
     oxo.inputs.listenKey("enter", function() {
-        oxo.screens.loadScreen('game', game);
+      oxo.screens.loadScreen("game", game);
       document.getElementById("end__score--collected").innerHTML = countWaste;
     });
   } else {

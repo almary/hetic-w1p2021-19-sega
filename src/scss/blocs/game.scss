@@ -53,7 +53,6 @@
   background-image: url("../../src/assets/sprites/submarine.gif");
   background-size: contain;
   background-repeat: no-repeat;
-  // border: red 2px solid;
 }
 
 .submarine.collision {
@@ -131,9 +130,8 @@
   height: 2px;
   right: 370px;
   top: 75px;
-  background: black; // FFFC31
+  background: black;
   visibility: hidden;
-  // transition: width 1.5s linear;
 }
 
 .sky__bar.isTriggered {
@@ -148,12 +146,10 @@
   right: 0;
   top: 100px;
   overflow: hidden;
-  // border: grey 2px solid;
 }
 
 .drop {
   position: absolute;
-  // background: purple;
   top: 180px;
   left: 800px;
   width: 60px;
@@ -187,8 +183,6 @@
   overflow: hidden;
 }
 
-//sass ici
-
 .waves {
   position: absolute;
   width: 1280px;
@@ -205,7 +199,6 @@
   width: 60px;
   height: 60px;
   position: absolute;
-  // border: red 2px solid;
 }
 
 .obstacle--waste {

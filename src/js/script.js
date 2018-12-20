@@ -375,12 +375,6 @@ function collision() {
   }
 }
 
-// function collisionSound() {
-//   var collisionSound = new Audio("../src/assets/sound/collision.mp3");
-//   collisionSound.loop = false;
-//   collisionSound.play();
-// }
-
 function death() {
   console.log("death");
   clearInterval(scoreInterval);

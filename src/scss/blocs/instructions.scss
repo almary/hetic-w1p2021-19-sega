@@ -9,4 +9,10 @@
   position: absolute;
   font-family: "upheaval", monospace;
   color: white;
+  font-size: 60px;
+  left: 30px;
+}
+
+.instructions__back:hover {
+  cursor: pointer;
 }

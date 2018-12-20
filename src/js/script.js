@@ -18,6 +18,9 @@ var pressed = [];
 var submarine;
 var canDrop = true;
 
+home();
+
+function home(){
 setTimeout(function() {
   document.getElementById("play").addEventListener("click", function() {
     oxo.screens.loadScreen("game", game);
@@ -26,6 +29,7 @@ setTimeout(function() {
     oxo.screens.loadScreen("instructions", instructions);
   });
 });
+}
 
 function game() {
   //reset scores
@@ -383,5 +387,9 @@ function end() {
 }
 
 function instructions() {
-  console.log('ok');
+  setTimeout(function() {
+    document.getElementById("back").addEventListener("click", function() {
+      oxo.screens.loadScreen("home", home);
+    });
+  });
 }

@@ -21,17 +21,15 @@ var submarine;
 var canDrop = true;
 var life = 3;
 
-oxo.screens.loadScreen('home', home);
+oxo.screens.loadScreen("home", home);
 
 function home() {
-    document.getElementById("play").addEventListener("click", function() {
-      oxo.screens.loadScreen("game", game);
-    });
-    document
-      .getElementById("instructions")
-      .addEventListener("click", function() {
-        oxo.screens.loadScreen("instructions", instructions);
-      });
+  document.getElementById("play").addEventListener("click", function() {
+    oxo.screens.loadScreen("game", game);
+  });
+  document.getElementById("instructions").addEventListener("click", function() {
+    oxo.screens.loadScreen("instructions", instructions);
+  });
 }
 
 function game() {
@@ -110,8 +108,7 @@ function game() {
       });
       oxo.elements.onCollisionWithElement(submarine, drop, function() {
         collision();
-        }
-      );
+      });
     }
 
     if (key === "z") {
@@ -139,8 +136,7 @@ function game() {
       });
       oxo.elements.onCollisionWithElement(submarine, drop, function() {
         collision();
-        }
-      );
+      });
     }
   });
 
@@ -163,7 +159,7 @@ function game() {
   moveInterval = setInterval(move, speed);
 
   //Move Down Little
-  moveDownIntervalLittle = setInterval(moveDownLittle, speed);    //c'est les 3 memes donc autant appelé toujours la même ?
+  moveDownIntervalLittle = setInterval(moveDownLittle, speed); //c'est les 3 memes donc autant appelé toujours la même ?
 
   //Move Down Medium
   moveDownIntervalMedium = setInterval(moveDownMedium, speed);
@@ -365,16 +361,22 @@ function addScore() {
 
 function collision() {
   life--;
-    submarine.classList.add("collision");
-    setTimeout(() => {
-      submarine.classList.remove("collision");
-    }, 500);
-    document.getElementById("count").innerHTML = life;
-    if (life === 0) {
-      // launch ending screen function
-      death();
-    }
+  submarine.classList.add("collision");
+  setTimeout(() => {
+    submarine.classList.remove("collision");
+  }, 500);
+  document.getElementById("count").innerHTML = life;
+  if (life === 0) {
+    // launch ending screen function
+    death();
+  }
 }
+
+// function collisionSound() {
+//   var collisionSound = new Audio("../src/assets/sound/collision.mp3");
+//   collisionSound.loop = false;
+//   collisionSound.play();
+// }
 
 function death() {
   console.log("death");

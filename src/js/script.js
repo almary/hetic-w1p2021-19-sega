@@ -17,24 +17,28 @@ var countWaste = 0;
 var pressed = [];
 var submarine;
 var canDrop = true;
+var life = 3;
 
 home();
 
-function home(){
-setTimeout(function() {
-  document.getElementById("play").addEventListener("click", function() {
-    oxo.screens.loadScreen("game", game);
+function home() {
+  setTimeout(function() {
+    document.getElementById("play").addEventListener("click", function() {
+      oxo.screens.loadScreen("game", game);
+    });
+    document
+      .getElementById("instructions")
+      .addEventListener("click", function() {
+        oxo.screens.loadScreen("instructions", instructions);
+      });
   });
-  document.getElementById("instructions").addEventListener("click", function() {
-    oxo.screens.loadScreen("instructions", instructions);
-  });
-});
 }
 
 function game() {
   //reset scores
   oxo.player.setScore(0);
   countWaste = 0;
+  life = 3;
 
   submarine = oxo.elements.createElement({
     type: "div",
@@ -105,8 +109,12 @@ function game() {
         appendTo: "#wrap"
       });
       oxo.elements.onCollisionWithElement(submarine, drop, function() {
-        // launch ending screen function
-        death();
+        life--;
+        document.getElementById("count").innerHTML = life;
+        if (life === 0) {
+          // launch ending screen function
+          death();
+        }
       });
     }
 
@@ -120,8 +128,12 @@ function game() {
         appendTo: "#wrap"
       });
       oxo.elements.onCollisionWithElement(submarine, drop, function() {
-        // launch ending screen function
-        death();
+        life--;
+        document.getElementById("count").innerHTML = life;
+        if (life === 0) {
+          // launch ending screen function
+          death();
+        }
       });
     }
 
@@ -135,8 +147,12 @@ function game() {
         appendTo: "#wrap"
       });
       oxo.elements.onCollisionWithElement(submarine, drop, function() {
-        // launch ending screen function
-        death();
+        life--;
+        document.getElementById("count").innerHTML = life;
+        if (life === 0) {
+          // launch ending screen function
+          death();
+        }
       });
     }
   });
@@ -202,8 +218,12 @@ function addObstacle() {
 
   // Check collisions
   oxo.elements.onCollisionWithElement(submarine, obstacle, function() {
-    // launch ending screen function
-    death();
+    life--;
+    document.getElementById("count").innerHTML = life;
+        if (life === 0) {
+          // launch ending screen function
+          death();
+        }
   });
 }
 
@@ -272,8 +292,12 @@ function addBarrel() {
 
   // Check collisions
   oxo.elements.onCollisionWithElement(submarine, obstacle, function() {
-    // launch ending screen function
-    death();
+    life--;
+    document.getElementById("count").innerHTML = life;
+    if (life === 0) {
+      // launch ending screen function
+      death();
+    }
   });
 }
 
@@ -296,8 +320,12 @@ function addShark() {
 
   // Check collisions
   oxo.elements.onCollisionWithElement(submarine, obstacle, function() {
-    // launch ending screen function
-    death();
+    life--;
+    document.getElementById("count").innerHTML = life;
+    if (life === 0) {
+      // launch ending screen function
+      death();
+    }
   });
 }
 

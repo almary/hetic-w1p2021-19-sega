@@ -49,6 +49,28 @@
   background-repeat: no-repeat;
 }
 
+.life {
+  position: absolute;
+  width: 50px;
+  height: 40px;
+  top : 10px;
+  left: 10px;
+  background-image: url("../../src/assets/sprites/submarine.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 1;
+}
+
+.life__count {
+  font-family: "upheaval", monospace;
+  position: absolute;
+  font-size: 30px;
+  top : 13px;
+  left: 75px;
+  color: white;
+  z-index: 1;
+}
+
 .score {
   font-family: "upheaval", monospace;
   color: white;
@@ -125,9 +147,10 @@
 }
 
 .drop--medium {
-  width: 75px;
-  height: 75px;
+  width: 60px;
+  height: 60px;
   background-image: url("../../src/assets/sprites/bomb.png");
+  border: red 2px solid;
 }
 
 .drop--large {

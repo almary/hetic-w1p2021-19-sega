@@ -1,5 +1,6 @@
 var speed = 20;
 var keyPlane = [];
+var scoreInterval;
 var obstacleInterval;
 var wasteInterval;
 var moveInterval;
@@ -7,7 +8,6 @@ var moveDownInterval;
 var removeInterval;
 var barrelInterval;
 var sharkInterval;
-var collisionInterval;
 var accelerationInterval;
 var planeInterval;
 var size = 40;
@@ -18,17 +18,13 @@ var pressed = [];
 var submarine;
 var canDrop = true;
 
-// setTimeout(function() {
-//   document.getElementById("play").addEventListener("click", function() {
-oxo.screens.loadScreen("game", game);
-//   });
-// });
+setTimeout(function() {
+  document.getElementById("play").addEventListener("click", function() {
+    oxo.screens.loadScreen("game", game);
+  });
+});
 
 function game() {
-  // if (oxo.screens.getCurrentScreen() !== "game") {
-  //   return;
-  // }
-
   //reset scores
   oxo.player.setScore(0);
   countWaste = 0;
@@ -99,7 +95,7 @@ function game() {
         styles: {
           transform: "translate(" + position.x + "px, 0px)"
         },
-        appendTo: '#wrap'
+        appendTo: "#wrap"
       });
       oxo.elements.onCollisionWithElement(submarine, drop, function() {
         // launch ending screen function
@@ -114,7 +110,7 @@ function game() {
         styles: {
           transform: "translate(" + position.x + "px, 0px)"
         },
-        appendTo: '#wrap'
+        appendTo: "#wrap"
       });
       oxo.elements.onCollisionWithElement(submarine, drop, function() {
         // launch ending screen function
@@ -129,7 +125,7 @@ function game() {
         styles: {
           transform: "translate(" + position.x + "px, 0px)"
         },
-        appendTo: '#wrap'
+        appendTo: "#wrap"
       });
       oxo.elements.onCollisionWithElement(submarine, drop, function() {
         // launch ending screen function
@@ -139,7 +135,7 @@ function game() {
   });
 
   // Score
-  setInterval(addScore, speed * 100);
+  scoreInterval = setInterval(addScore, speed * 100);
 
   //Obstacles
   obstacleInterval = setInterval(addObstacle, 1300);
@@ -362,16 +358,23 @@ function addScore() {
 
 function death() {
   console.log("death");
-  // oxo.screens.loadScreen("end", end);
+  clearInterval(scoreInterval);
+  clearInterval(obstacleInterval);
+  clearInterval(wasteInterval);
+  clearInterval(moveInterval);
+  clearInterval(moveDownInterval);
+  clearInterval(removeInterval);
+  clearInterval(barrelInterval);
+  clearInterval(sharkInterval);
+  clearInterval(accelerationInterval);
+  clearInterval(planeInterval);
+  oxo.screens.loadScreen("end", end);
 }
 
 function end() {
-  if (oxo.screens.getCurrentScreen() === "end") {
-    oxo.inputs.listenKey("enter", function() {
-      oxo.screens.loadScreen("game", game);
-      document.getElementById("end__score--collected").innerHTML = countWaste;
-    });
-  } else {
-    return;
-  }
+  document.getElementById("end__score--collected").innerHTML = countWaste;
+  oxo.inputs.listenKey("enter", function() {
+    oxo.screens.loadScreen("game", game);
+    oxo.inputs.cancelKeyListener("enter");
+  });
 }

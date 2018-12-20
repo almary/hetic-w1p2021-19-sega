@@ -399,7 +399,6 @@ function death() {
 }
 
 function end() {
-  document.getElementById('oof').play();
   document.getElementById("end__score--collected").innerHTML = countWaste;
   oxo.inputs.listenKey("enter", function() {
     oxo.screens.loadScreen("game", game);

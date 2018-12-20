@@ -200,12 +200,13 @@ function addObstacle() {
   });
 
   // Check collisions
-  // if (!submarine.classList.contains("collision")) {
     // console.log('ok');
     oxo.elements.onCollisionWithElement(submarine, obstacle, function() {
-      collision();
+      if (!submarine.classList.contains("collision")) {
+        collision();
+      }
+
     });
-  // }
 }
 
 function addWaste() {
@@ -367,7 +368,7 @@ function collision() {
   submarine.classList.add("collision");
   setTimeout(() => {
     submarine.classList.remove("collision");
-  }, 500);
+  }, 500);                                                       //
   document.getElementById("count").innerHTML = life;
   if (life === 0) {
     // launch ending screen function

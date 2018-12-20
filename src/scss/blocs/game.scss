@@ -15,12 +15,26 @@
   0% {
     width: 100px;
   }
-
   99% {
     width: 0px;
   }
   100% {
     width: 100px;
+  }
+}
+
+@keyframes submarineCollision {
+  0% {
+    opacity: 0;
+  }
+  33% {
+    opacity: 1;
+  }
+  66% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
 
@@ -42,6 +56,10 @@
   // border: red 2px solid;
 }
 
+.submarine.collision {
+  animation: submarineCollision 0.5s linear;
+}
+
 .plane {
   height: 70px;
   background-image: url("../../src/assets/sprites/plane.gif");
@@ -53,7 +71,7 @@
   position: absolute;
   width: 50px;
   height: 40px;
-  top : 10px;
+  top: 10px;
   left: 10px;
   background-image: url("../../src/assets/sprites/submarine.png");
   background-size: contain;
@@ -65,7 +83,7 @@
   font-family: "upheaval", monospace;
   position: absolute;
   font-size: 30px;
-  top : 13px;
+  top: 13px;
   left: 75px;
   color: white;
   z-index: 1;

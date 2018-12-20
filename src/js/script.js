@@ -109,13 +109,9 @@ function game() {
         appendTo: "#wrap"
       });
       oxo.elements.onCollisionWithElement(submarine, drop, function() {
-        life--;
-        document.getElementById("count").innerHTML = life;
-        if (life === 0) {
-          // launch ending screen function
-          death();
+        collision();
         }
-      });
+      );
     }
 
     if (key === "z") {
@@ -128,12 +124,7 @@ function game() {
         appendTo: "#wrap"
       });
       oxo.elements.onCollisionWithElement(submarine, drop, function() {
-        life--;
-        document.getElementById("count").innerHTML = life;
-        if (life === 0) {
-          // launch ending screen function
-          death();
-        }
+        collision();
       });
     }
 
@@ -147,13 +138,9 @@ function game() {
         appendTo: "#wrap"
       });
       oxo.elements.onCollisionWithElement(submarine, drop, function() {
-        life--;
-        document.getElementById("count").innerHTML = life;
-        if (life === 0) {
-          // launch ending screen function
-          death();
+        collision();
         }
-      });
+      );
     }
   });
 
@@ -218,12 +205,7 @@ function addObstacle() {
 
   // Check collisions
   oxo.elements.onCollisionWithElement(submarine, obstacle, function() {
-    life--;
-    document.getElementById("count").innerHTML = life;
-        if (life === 0) {
-          // launch ending screen function
-          death();
-        }
+    collision();
   });
 }
 
@@ -292,12 +274,7 @@ function addBarrel() {
 
   // Check collisions
   oxo.elements.onCollisionWithElement(submarine, obstacle, function() {
-    life--;
-    document.getElementById("count").innerHTML = life;
-    if (life === 0) {
-      // launch ending screen function
-      death();
-    }
+    collision();
   });
 }
 
@@ -320,12 +297,7 @@ function addShark() {
 
   // Check collisions
   oxo.elements.onCollisionWithElement(submarine, obstacle, function() {
-    life--;
-    document.getElementById("count").innerHTML = life;
-    if (life === 0) {
-      // launch ending screen function
-      death();
-    }
+    collision();
   });
 }
 
@@ -389,6 +361,19 @@ function remove() {
 
 function addScore() {
   oxo.player.addToScore(10);
+}
+
+function collision() {
+  life--;
+    submarine.classList.add("collision");
+    setTimeout(() => {
+      submarine.classList.remove("collision");
+    }, 500);
+    document.getElementById("count").innerHTML = life;
+    if (life === 0) {
+      // launch ending screen function
+      death();
+    }
 }
 
 function death() {

@@ -368,7 +368,7 @@ function collision() {
   submarine.classList.add("collision");
   setTimeout(() => {
     submarine.classList.remove("collision");
-  }, 500);                                                       //
+  }, 700);                                                       //
   document.getElementById("count").innerHTML = life;
   if (life === 0) {
     // launch ending screen function

@@ -19,10 +19,9 @@ var submarine;
 var canDrop = true;
 var life = 3;
 
-home();
+oxo.screens.loadScreen('home', home);
 
 function home() {
-  setTimeout(function() {
     document.getElementById("play").addEventListener("click", function() {
       oxo.screens.loadScreen("game", game);
     });
@@ -31,7 +30,6 @@ function home() {
       .addEventListener("click", function() {
         oxo.screens.loadScreen("instructions", instructions);
       });
-  });
 }
 
 function game() {

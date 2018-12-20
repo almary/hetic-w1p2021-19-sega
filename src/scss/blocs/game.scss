@@ -82,8 +82,8 @@
 .life__count {
   font-family: "upheaval", monospace;
   position: absolute;
-  font-size: 30px;
-  top: 13px;
+  font-size: 40px;
+  top: 8px;
   left: 75px;
   color: white;
   z-index: 1;
@@ -168,7 +168,6 @@
   width: 60px;
   height: 60px;
   background-image: url("../../src/assets/sprites/bomb.png");
-  border: red 2px solid;
 }
 
 .drop--large {

@@ -159,7 +159,7 @@ function game() {
   moveInterval = setInterval(move, speed);
 
   //Move Down Little
-  moveDownIntervalLittle = setInterval(moveDownLittle, speed); //c'est les 3 memes donc autant appelé toujours la même ?
+  moveDownIntervalLittle = setInterval(moveDownLittle, speed);
 
   //Move Down Medium
   moveDownIntervalMedium = setInterval(moveDownMedium, speed);
@@ -200,13 +200,11 @@ function addObstacle() {
   });
 
   // Check collisions
-    // console.log('ok');
-    oxo.elements.onCollisionWithElement(submarine, obstacle, function() {
-      if (!submarine.classList.contains("collision")) {
-        collision();
-      }
-
-    });
+  oxo.elements.onCollisionWithElement(submarine, obstacle, function() {
+    if (!submarine.classList.contains("collision")) {
+      collision();
+    }
+  });
 }
 
 function addWaste() {
@@ -368,7 +366,7 @@ function collision() {
   submarine.classList.add("collision");
   setTimeout(() => {
     submarine.classList.remove("collision");
-  }, 700);                                                       //
+  }, 700);
   document.getElementById("count").innerHTML = life;
   if (life === 0) {
     // launch ending screen function

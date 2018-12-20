@@ -201,7 +201,7 @@ function addObstacle() {
 
   // Check collisions
   // if (!submarine.classList.contains("collision")) {
-    // console.log('hey');
+    // console.log('ok');
     oxo.elements.onCollisionWithElement(submarine, obstacle, function() {
       collision();
     });
@@ -399,6 +399,7 @@ function death() {
 }
 
 function end() {
+  document.getElementById('oof').play();
   document.getElementById("end__score--collected").innerHTML = countWaste;
   oxo.inputs.listenKey("enter", function() {
     oxo.screens.loadScreen("game", game);

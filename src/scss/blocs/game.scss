@@ -36,7 +36,7 @@
 .submarine {
   height: 72px;
   width: 120px;
-  background-image: url("../../src/assets/submarine.gif");
+  background-image: url("../../src/assets/sprites/submarine.gif");
   background-size: contain;
   background-repeat: no-repeat;
   // border: red 2px solid;
@@ -44,7 +44,7 @@
 
 .plane {
   height: 70px;
-  background-image: url("../../src/assets/plane.gif");
+  background-image: url("../../src/assets/sprites/plane.gif");
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -69,7 +69,7 @@
   height: 30px;
   right: 0;
   top: 50px;
-  background-image: url("../../src/assets/waste-icon.png");
+  background-image: url("../../src/assets/sprites/waste-icon.png");
   background-size: contain;
   background-repeat: no-repeat;
   z-index: 1;
@@ -119,7 +119,7 @@
   width: 60px;
   height: 60px;
   z-index: 2;
-  background-image: url("../../src/assets/brick.png");
+  background-image: url("../../src/assets/sprites/brick.png");
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -127,13 +127,13 @@
 .drop--medium {
   width: 75px;
   height: 75px;
-  background-image: url("../../src/assets/bomb.png");
+  background-image: url("../../src/assets/sprites/bomb.png");
 }
 
 .drop--large {
   width: 90px;
   height: 90px;
-  background-image: url("../../src/assets/barrel-tnt.png");
+  background-image: url("../../src/assets/sprites/barrel-tnt.png");
 }
 
 .water {
@@ -174,22 +174,22 @@
 }
 
 .obstacle--can {
-  background-image: url("../../src/assets/can.png");
+  background-image: url("../../src/assets/sprites/can.png");
 }
 
 .obstacle--bag {
-  background-image: url("../../src/assets/bag.png");
+  background-image: url("../../src/assets/sprites/bag.png");
 }
 
 .obstacle--rock {
-  background-image: url("../../src/assets/rock.png");
+  background-image: url("../../src/assets/sprites/rock.png");
   background-size: contain;
 }
 
 .obstacle--barrel {
   width: 90px;
   height: 120px;
-  background-image: url("../../src/assets/barrel.png");
+  background-image: url("../../src/assets/sprites/barrel.png");
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -198,7 +198,7 @@
   position: absolute;
   width: 160px;
   height: 100px;
-  background-image: url("../../src/assets/shark.gif");
+  background-image: url("../../src/assets/sprites/shark.gif");
   background-size: contain;
   background-repeat: no-repeat;
 }

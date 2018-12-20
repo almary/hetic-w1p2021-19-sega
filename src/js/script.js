@@ -4,7 +4,9 @@ var scoreInterval;
 var obstacleInterval;
 var wasteInterval;
 var moveInterval;
-var moveDownInterval;
+var moveDownIntervalLittle;
+var moveDownIntervalMedium;
+var moveDownIntervalLarge;
 var removeInterval;
 var barrelInterval;
 var sharkInterval;
@@ -161,13 +163,13 @@ function game() {
   moveInterval = setInterval(move, speed);
 
   //Move Down Little
-  moveDownInterval = setInterval(moveDownLittle, speed);
+  moveDownIntervalLittle = setInterval(moveDownLittle, speed);    //c'est les 3 memes donc autant appelé toujours la même ?
 
   //Move Down Medium
-  moveDownInterval = setInterval(moveDownMedium, speed);
+  moveDownIntervalMedium = setInterval(moveDownMedium, speed);
 
   //Move Down Large
-  moveDownInterval = setInterval(moveDownLarge, speed);
+  moveDownIntervalLarge = setInterval(moveDownLarge, speed);
 
   //Remove
   removeInterval = setInterval(remove, 5000);
@@ -380,7 +382,9 @@ function death() {
   clearInterval(obstacleInterval);
   clearInterval(wasteInterval);
   clearInterval(moveInterval);
-  clearInterval(moveDownInterval);
+  clearInterval(moveDownIntervalLittle);
+  clearInterval(moveDownIntervalMedium);
+  clearInterval(moveDownIntervalLarge);
   clearInterval(removeInterval);
   clearInterval(barrelInterval);
   clearInterval(sharkInterval);

@@ -22,6 +22,9 @@ setTimeout(function() {
   document.getElementById("play").addEventListener("click", function() {
     oxo.screens.loadScreen("game", game);
   });
+  document.getElementById("instructions").addEventListener("click", function() {
+    oxo.screens.loadScreen("instructions", instructions);
+  });
 });
 
 function game() {
@@ -377,4 +380,8 @@ function end() {
     oxo.screens.loadScreen("game", game);
     oxo.inputs.cancelKeyListener("enter");
   });
+}
+
+function instructions() {
+  console.log('ok');
 }

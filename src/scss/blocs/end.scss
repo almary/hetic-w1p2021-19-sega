@@ -1,17 +1,33 @@
+@keyframes submarineLoop {
+  0% {
+    transform: translate(0, 800px);
+  }
+
+  50% {
+    transform: translate(640px, 400px) rotate(180deg);
+  }
+  100% {
+    transform: translate(1280px, 0) rotate(0deg);
+  }
+}
+
 .end__wrap {
   width: 1280px;
   height: 800px;
   position: relative;
   left: 50%;
   transform: translateX(-50%);
+  overflow: hidden;
 }
 
-.end__background, .end__text, .end__score {
+.end__background,
+.end__text,
+.end__score,
+.end__submarine {
   position: absolute;
 }
 
 .end__background {
-  position: absolute;
   width: 1280px;
   height: 800px;
   background-image: url("../../src/assets/background/ocean-full.png");
@@ -51,4 +67,15 @@
 
 .end__score--collected {
   top: 600px;
+}
+
+.end__submarine {
+  height: 72px;
+  width: 120px;
+  transform: translate(0, 800px);
+  background-image: url("../../src/assets/sprites/submarine.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 1;
+  animation: submarineLoop 3s linear;
 }

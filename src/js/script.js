@@ -200,9 +200,12 @@ function addObstacle() {
   });
 
   // Check collisions
-  oxo.elements.onCollisionWithElement(submarine, obstacle, function() {
-    collision();
-  });
+  // if (!submarine.classList.contains("collision")) {
+    // console.log('hey');
+    oxo.elements.onCollisionWithElement(submarine, obstacle, function() {
+      collision();
+    });
+  // }
 }
 
 function addWaste() {
